@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="dark_brown">#6C331E</color>
+    <color name="light_gray">#D9D9D9</color>
+    <color name="light_gray2">#F4F4F4</color>
+    <color name="dark_gray">#BDBBBB</color>
+    <color name="dark_gray2">#787676</color>
+    <color name="checkboxUncheckedBtnTintColor">#CCCCCC</color>
+    <color name="checkboxCheckedBtnTintColor">#252525</color>
+    <color name="gray">#BDBBBB</color>
+    //cart screen colors
+
+    <color name="bg_color_1">#F8E0D7</color>
+    <color name="bg_color_2">#E3B6A5</color>
+
+    <color name="strokeColor2">#cccccc</color>
+
+    <color name="strokeColor4">#29000000</color>
+    <color name="strokeColor5">#555555</color>
+
+    <color name="textColor3">#545454</color>
+    <color name="textColor4">#353535</color>
+    <color name="textColor5">#aaaaaa</color>
+
+    <color name="textColor1">#000000</color>
+</resources>

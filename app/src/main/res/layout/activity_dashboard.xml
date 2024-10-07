@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:layoutDirection="ltr">
+
+
+        <TextView
+            android:id="@+id/labelToolbar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nudmotoya"
+            android:gravity="center"
+            android:padding="@dimen/_5sdp"
+            android:text="@string/manage_products"
+            android:textAllCaps="false"
+            android:textSize="@dimen/_14ssp"
+            android:textColor="@color/dark_brown"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:fillViewport="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/labelToolbar">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_200sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/labelToolbar">
+
+                <!--
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guidelineBottom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.92" />-->
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/itemAddProducts"
+                    android:layout_width="@dimen/_105sdp"
+                    android:layout_height="@dimen/_95sdp"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:background="@drawable/rectangle_outline_brown"
+                    android:padding="@dimen/_20sdp"
+                    app:layout_constraintBottom_toBottomOf="@+id/itemViewProducts"
+                    app:layout_constraintEnd_toStartOf="@+id/itemViewProducts"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/itemViewProducts">
+
+                    <ImageView
+                        android:id="@+id/imageViewItem"
+                        android:layout_width="@dimen/_35sdp"
+                        android:layout_height="@dimen/_35sdp"
+                        android:padding="@dimen/_8sdp"
+                        android:background="@drawable/circle_dashboard_widget"
+                        android:src="@drawable/vending_icon"
+                        app:layout_constraintBottom_toTopOf="@+id/tvCanister"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvCanister"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:fontFamily="@font/nudmotoya"
+                        android:includeFontPadding="false"
+                        android:text="Add Products"
+                        android:textColor="@color/dark_brown"
+                        android:textSize="@dimen/_7ssp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imageViewItem" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/itemViewProducts"
+                    android:layout_width="@dimen/_105sdp"
+                    android:layout_height="@dimen/_95sdp"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:background="@drawable/rectangle_outline_brown"
+                    android:padding="@dimen/_20sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/itemAddProducts"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/imageViewTestCoffee"
+                        android:layout_width="@dimen/_35sdp"
+                        android:layout_height="@dimen/_35sdp"
+                        android:padding="@dimen/_8sdp"
+                        android:background="@drawable/circle_dashboard_widget"
+                        android:src="@drawable/vending_icon"
+                        app:layout_constraintBottom_toTopOf="@+id/tvTestCoffee"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvTestCoffee"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:fontFamily="@font/nudmotoya"
+                        android:includeFontPadding="false"
+                        android:text="View Products"
+                        android:textColor="@color/dark_brown"
+                        android:textSize="@dimen/_7ssp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imageViewTestCoffee" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/itemViewStandardVM"
+                    android:layout_width="@dimen/_105sdp"
+                    android:layout_height="@dimen/_95sdp"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:background="@drawable/rectangle_outline_brown"
+                    android:padding="@dimen/_20sdp"
+                    app:layout_constraintEnd_toEndOf="@+id/itemAddProducts"
+                    app:layout_constraintStart_toStartOf="@+id/itemAddProducts"
+                    app:layout_constraintTop_toBottomOf="@+id/itemAddProducts">
+
+                    <ImageView
+                        android:id="@+id/imageViewTestStandardVM"
+                        android:layout_width="@dimen/_35sdp"
+                        android:layout_height="@dimen/_35sdp"
+                        android:padding="@dimen/_8sdp"
+                        android:background="@drawable/circle_dashboard_widget"
+                        android:src="@drawable/vending_icon"
+                        app:layout_constraintBottom_toTopOf="@+id/tvTestStandardVM"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvTestStandardVM"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:fontFamily="@font/nudmotoya"
+                        android:includeFontPadding="false"
+                        android:text="Test VM"
+                        android:textColor="@color/dark_brown"
+                        android:textSize="@dimen/_7ssp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imageViewTestStandardVM" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/itemViewTestPrinter"
+                    android:layout_width="@dimen/_105sdp"
+                    android:layout_height="@dimen/_95sdp"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:background="@drawable/rectangle_outline_brown"
+                    android:padding="@dimen/_20sdp"
+                    app:layout_constraintEnd_toEndOf="@+id/itemViewProducts"
+                    app:layout_constraintStart_toStartOf="@+id/itemViewProducts"
+                    app:layout_constraintTop_toBottomOf="@+id/itemViewProducts">
+
+                    <ImageView
+                        android:id="@+id/imageViewTestPrinter"
+                        android:layout_width="@dimen/_35sdp"
+                        android:layout_height="@dimen/_35sdp"
+                        android:padding="@dimen/_8sdp"
+                        android:background="@drawable/circle_dashboard_widget"
+                        android:src="@drawable/vending_icon"
+                        app:layout_constraintBottom_toTopOf="@+id/tvTestPrinter"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvTestPrinter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:fontFamily="@font/nudmotoya"
+                        android:includeFontPadding="false"
+                        android:text="Test Components"
+                        android:textColor="@color/dark_brown"
+                        android:textSize="@dimen/_7ssp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imageViewTestPrinter" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnExit"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    android:background="@drawable/rectangle_solid_brown"
+                    android:fontFamily="@font/nudmotoya"
+                    android:text="@string/exit"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_14ssp"
+                    android:textStyle="bold"
+                    app:backgroundTint="@null"
+                    app:layout_constraintEnd_toEndOf="@+id/itemViewProducts"
+                    app:layout_constraintStart_toStartOf="@+id/itemAddProducts"
+                    app:layout_constraintTop_toBottomOf="@+id/itemViewStandardVM" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

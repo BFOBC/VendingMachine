@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">VendingMachineInventoryManagement</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="admin_login">Admin Login</string>
+    <string name="login_to_configure_vending_machine">Inventory Management</string>
+    <string name="email">Email</string>
+    <string name="manage_products">Manage Products</string>
+    <string name="exit">Exit</string>
+    <string name="add_product">Add New Product</string>
+    <string name="viewdetails">View Details</string>
+</resources>

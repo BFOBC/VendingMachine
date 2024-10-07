@@ -1,0 +1,19 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.VendingMachineInventoryManagement" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+    <style name="ButtonStyle" parent="Widget.MaterialComponents.Button">
+        <item name="android:textSize">@dimen/_8ssp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textColor">@color/white</item>
+
+    </style>
+    <style name="Theme.VendingMachineInventoryManagement" parent="Base.Theme.VendingMachineInventoryManagement" />
+    <style name="ButtonStyle.DarkBrownButton">
+        <item name="android:backgroundTint">@color/dark_brown</item>
+    </style>
+</resources>

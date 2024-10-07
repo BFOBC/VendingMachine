@@ -1,0 +1,5 @@
+<!-- dark_brown_rectangle.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/dark_gray" /> <!-- Dark Brown color -->
+    <corners android:radius="@dimen/_5sdp" /> <!-- Adjust corner radius as needed -->
+</shape>
