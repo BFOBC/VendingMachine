@@ -5,6 +5,7 @@ plugins {
     id("com.google.dagger.hilt.android")
     id("kotlin-parcelize")
     kotlin("plugin.serialization") version "1.8.0"
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -119,6 +120,9 @@ dependencies {
     // shimmer
     implementation("io.supercharge:shimmerlayout:2.1.0")
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
-
-
+    // GLide
+    implementation("com.github.bumptech.glide:glide:4.13.1")
+    kapt("com.github.bumptech.glide:compiler:4.12.0")
+    //circle image
+    implementation("de.hdodenhof:circleimageview:3.1.0")
 }

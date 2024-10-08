@@ -1,5 +1,6 @@
 package com.example.vendingmachineinventorymanagement.ui
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -42,9 +43,15 @@ class Dashboard : AppCompatActivity() {
     private fun onModuleClick(itemView: ConstraintLayout) {
         when (itemView.id) {
             R.id.itemAddProducts -> {
+                val intent = Intent(this, AddProductsActivity::class.java)
+                startActivity(intent)
+                finish()
             }
 
             R.id.itemViewProducts -> {
+                val intent = Intent(this, ViewProductsActivity::class.java)
+                startActivity(intent)
+                finish()
             }
             else -> {
                 null

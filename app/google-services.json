@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "137693601568",
+    "project_id": "vendingmachine-5b38d",
+    "storage_bucket": "vendingmachine-5b38d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:137693601568:android:307ac3b4c283c080c10145",
+        "android_client_info": {
+          "package_name": "com.example.vendingmachineinventorymanagement"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCur6qPKl90M7duKBeEm0npWeBKeHUpesc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

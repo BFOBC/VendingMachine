@@ -6,4 +6,6 @@ plugins {
     id("com.google.dagger.hilt.android") version "2.48" apply false
     // id("androidx.navigation.safeargs") version "2.7.7" apply false
     kotlin("plugin.serialization") version "1.8.0"
+    id("com.google.gms.google-services") version "4.4.0" apply false
+
 }

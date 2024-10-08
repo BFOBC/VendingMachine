@@ -12,7 +12,25 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scrollbars="none"
+            android:orientation="vertical"
             android:fillViewport="true">
+
+            <TextView
+                android:id="@+id/labelToolbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nudmotoya"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:padding="@dimen/_5sdp"
+                android:text="@string/products"
+                android:textAllCaps="false"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:textSize="@dimen/_14ssp"
+                android:textColor="@color/dark_brown"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.coordinatorlayout.widget.CoordinatorLayout
                 android:id="@+id/parentRootMainActivity"
@@ -43,6 +61,7 @@
                         android:id="@+id/scrollViewHome"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/_10sdp"
                         android:fillViewport="true"
                         app:layout_behavior="@string/appbar_scrolling_view_behavior"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -75,7 +94,7 @@
                     android:layout_height="@dimen/_60sdp"
                     android:layout_gravity="center"
                     android:indeterminate="true"
-                    android:indeterminateTint="@color/dark_brown" />
+                    android:indeterminateTint="@color/white" />
             </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
         </LinearLayout>

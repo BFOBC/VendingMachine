@@ -16,6 +16,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/nudmotoya"
             android:gravity="center"
+            android:layout_marginTop="@dimen/_30sdp"
             android:padding="@dimen/_5sdp"
             android:text="@string/manage_products"
             android:textAllCaps="false"
@@ -43,14 +44,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/labelToolbar">
-
-                <!--
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/guidelineBottom"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layout_constraintGuide_percent="0.92" />-->
 
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -205,7 +198,7 @@
                         android:layout_marginTop="@dimen/_10sdp"
                         android:fontFamily="@font/nudmotoya"
                         android:includeFontPadding="false"
-                        android:text="Test Components"
+                        android:text="Test VM"
                         android:textColor="@color/dark_brown"
                         android:textSize="@dimen/_7ssp"
                         app:layout_constraintEnd_toEndOf="parent"

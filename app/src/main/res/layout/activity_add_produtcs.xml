@@ -19,6 +19,7 @@
             android:padding="@dimen/_5sdp"
             android:text="@string/add_product"
             android:textAllCaps="false"
+            android:layout_marginTop="@dimen/_20sdp"
             android:textSize="@dimen/_14ssp"
             android:textColor="@color/dark_brown"
             app:layout_constraintEnd_toEndOf="parent"
@@ -37,13 +38,13 @@
             app:boxBackgroundMode="outline"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="@id/labelToolbar">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etProductName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Product Name"
+                android:hint="@string/product_name"
                 android:padding="16dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -63,7 +64,7 @@
             android:id="@+id/etSellPrice"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Sell Price"
+            android:hint="@string/sell_price"
             android:inputType="numberDecimal"
             android:padding="16dp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -84,7 +85,7 @@
             android:id="@+id/etCostPrice"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Cost Price"
+            android:hint="@string/cost_price"
             android:inputType="numberDecimal"
             android:padding="16dp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -105,7 +106,7 @@
             android:id="@+id/etSlotNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Slot Number"
+            android:hint="@string/slot_number"
             android:inputType="number"
             android:padding="16dp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -128,6 +129,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Choose Image"
+        app:backgroundTint="@null"
+        android:background="@drawable/rectangle_solid_brown"
+        android:fontFamily="@font/nudmotoya"
         app:layout_constraintTop_toBottomOf="@id/productImageView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -149,7 +153,7 @@
             android:id="@+id/etDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Description"
+            android:hint="@string/description"
             android:padding="16dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -169,7 +173,7 @@
             android:id="@+id/etMaxQuantity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Max Quantity"
+            android:hint="@string/max_quantity"
             android:inputType="number"
             android:padding="16dp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -190,23 +194,26 @@
             android:id="@+id/etAvailableQuantity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Available Quantity"
+            android:hint="@string/available_quantity"
             android:inputType="number"
             android:padding="16dp" />
     </com.google.android.material.textfield.TextInputLayout>
-
-
 
     <!-- Submit Product Button -->
     <Button
         android:id="@+id/btnSubmitProduct"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Submit Product"
+        android:text="@string/save_product"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
         android:padding="16dp"
+        app:backgroundTint="@null"
+        android:background="@drawable/rectangle_solid_brown"
+        android:fontFamily="@font/nudmotoya"
         app:layout_constraintTop_toBottomOf="@id/layoutAvailableQuantity"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintStart_toStartOf="@id/layoutAvailableQuantity"
+        app:layout_constraintEnd_toEndOf="@id/layoutAvailableQuantity" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -1,4 +1,4 @@
-package com.smartfusion.qahwapointvendingapp.utility.extensionfunctions
+package com.example.vendingmachineinventorymanagement.extensionfunctions
 
 import android.content.Context
 import android.content.Intent

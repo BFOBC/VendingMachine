@@ -7,12 +7,14 @@ import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.DrawableRes
+import com.example.vendingmachineinventorymanagement.databinding.ConfimationDialogCustomDesingBinding
 import com.example.vendingmachineinventorymanagement.databinding.CustomErrorDialogBinding
 import com.example.vendingmachineinventorymanagement.utils.singleClickListener
 
+
 private var customErrorDialog: Dialog? = null
 
-fun Context.showCustomErrorDialog2(
+fun Context.showCustomErrorDialog(
     title: String,
     description: String,
     buttonText: String,
@@ -57,5 +59,40 @@ fun Context.showCustomErrorDialog2(
     dialog.show()
 
     customErrorDialog = dialog // Assign dialog reference
+}
+
+fun Context.showConfirmationDialog(
+    title: String,
+    description: String,
+    onButtonClick: () -> Unit
+) {
+    val binding = ConfimationDialogCustomDesingBinding.inflate(LayoutInflater.from(this))
+    val dialog = Dialog(this)
+    dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+    // Set content view using View Binding
+    dialog.setContentView(binding.root)
+
+    // Set data to views
+    binding.textHeading.text = title
+    binding.textDescription.text = description
+
+    // Set button click listener
+    binding.btnYes.setOnClickListener {
+        onButtonClick.invoke()
+        dialog.dismiss()
+    }
+    binding.btnNo.setOnClickListener {
+        dialog.dismiss()
+    }
+    binding.imageViewClose.setOnClickListener {
+        dialog.dismiss()
+    }
+    // Adjust dialog size
+    val displayMetrics = this.resources.displayMetrics
+    val width = displayMetrics.widthPixels * 0.85
+    dialog.window?.setLayout(width.toInt(), ViewGroup.LayoutParams.WRAP_CONTENT)
+
+    // Show the dialog
+    dialog.show()
 }
 

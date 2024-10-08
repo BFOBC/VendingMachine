@@ -9,4 +9,14 @@
     <string name="exit">Exit</string>
     <string name="add_product">Add New Product</string>
     <string name="view">View</string>
+    <string name="product_name">Product Name</string>
+    <string name="sell_price">Sell Price</string>
+    <string name="cost_price">Cost Price</string>
+    <string name="slot_number">Slot Number</string>
+    <string name="description">Description</string>
+    <string name="max_quantity">Max Quantity</string>
+    <string name="available_quantity">Available Quantity</string>
+    <string name="save_product">Save Product</string>
+    <string name="products">Products</string>
+    <string name="loading">Loading...</string>
 </resources>
