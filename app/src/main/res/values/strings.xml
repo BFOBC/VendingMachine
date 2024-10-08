@@ -8,5 +8,5 @@
     <string name="manage_products">Manage Products</string>
     <string name="exit">Exit</string>
     <string name="add_product">Add New Product</string>
-    <string name="viewdetails">View Details</string>
+    <string name="view">View</string>
 </resources>

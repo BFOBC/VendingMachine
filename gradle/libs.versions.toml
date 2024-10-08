@@ -15,6 +15,7 @@ constraintlayout = "2.1.4"
 firebaseAuth = "22.1.0"  # Firebase Auth version
 firebaseDatabase = "20.3.0"  # Firebase Database version
 firebaseStorage = "20.3.0"  # Firebase Storage version
+swiperefreshlayout = "1.1.0"
 
 
 
@@ -102,6 +103,8 @@ firebase-database = { module = "com.google.firebase:firebase-database", version.
 firebase-storage = { module = "com.google.firebase:firebase-storage", version = "20.2.1" }  # Firebase Storage
 
 supercharge-shimmer = { module = "io.supercharge:shimmerlayout", version.ref = "supercharge-shimmer" }
+swiperefreshlayout = { group = "androidx.swiperefreshlayout", name = "swiperefreshlayout", version.ref = "swiperefreshlayout" }
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

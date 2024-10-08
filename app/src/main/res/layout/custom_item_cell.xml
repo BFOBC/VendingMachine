@@ -3,18 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/item_parentView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/_5sdp"
         android:background="@drawable/white_rectangle_shape"
+        android:layoutDirection="ltr"
         android:paddingLeft="@dimen/_5sdp"
         android:paddingTop="@dimen/_10sdp"
         android:paddingRight="@dimen/_5sdp"
-        android:paddingBottom="@dimen/_5sdp"
-        android:layoutDirection="ltr">
+        android:paddingBottom="@dimen/_5sdp">
+
+
 
         <ImageView
             android:id="@+id/imageViewItem"
@@ -32,10 +33,10 @@
             android:layout_height="@dimen/_10sdp"
             android:ellipsize="end"
             android:fontFamily="@font/nudmotoya"
+            android:gravity="center"
             android:includeFontPadding="false"
             android:singleLine="true"
-            android:text="Hot Choclate"
-            android:gravity="center"
+            android:text="Hot Chocolate"
             android:textColor="@color/black"
             android:textSize="@dimen/_7ssp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -54,17 +55,29 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvItemName" />
+        <TextView
+            android:id="@+id/tvSlotNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/blooming_elegant_sans"
+            android:text="Slot #1"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_8ssp"
+            app:layout_constraintEnd_toEndOf="@+id/tvItemPrice"
+            app:layout_constraintStart_toStartOf="@+id/tvItemPrice"
+            app:layout_constraintTop_toBottomOf="@+id/tvItemPrice" />
 
         <Button
             android:id="@+id/btnOrder"
             style="@style/ButtonStyle.DarkBrownButton"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/_18sdp"
+            android:layout_height="@dimen/_25sdp"
             android:fontFamily="@font/blooming_elegant_sans"
-            android:text="@string/viewdetails"
-            app:layout_constraintEnd_toEndOf="@+id/tvItemPrice"
-            app:layout_constraintStart_toStartOf="@+id/tvItemPrice"
-            app:layout_constraintTop_toBottomOf="@+id/tvItemPrice" />
+            android:text="@string/view"
+            app:layout_constraintEnd_toEndOf="@+id/tvSlotNumber"
+            app:layout_constraintStart_toStartOf="@+id/tvSlotNumber"
+            app:layout_constraintTop_toBottomOf="@+id/tvSlotNumber" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
