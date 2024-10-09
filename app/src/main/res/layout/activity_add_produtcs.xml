@@ -26,7 +26,35 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Product Name -->
+        <!-- Product Image -->
+        <ImageView
+            android:id="@+id/productImageView"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/baseline_image_24"
+            android:contentDescription="Product Image"
+            app:layout_constraintTop_toBottomOf="@id/labelToolbar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:scaleType="centerCrop"
+            app:tint="@color/dark_brown" />
+
+        <!-- Choose Image Button -->
+        <Button
+            android:id="@+id/btnChooseImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Choose Image"
+            app:backgroundTint="@null"
+            android:background="@drawable/rectangle_solid_brown"
+            android:fontFamily="@font/nudmotoya"
+            app:layout_constraintTop_toBottomOf="@id/productImageView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp" />
+
+        <!-- Product Name -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/layoutProductName"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -38,7 +66,7 @@
             app:boxBackgroundMode="outline"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/labelToolbar">
+            app:layout_constraintTop_toBottomOf="@id/btnChooseImage">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etProductName"
@@ -48,174 +76,144 @@
                 android:padding="16dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- Sell Price -->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/layoutSellPrice"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/layoutProductName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="16dp"
-        app:boxBackgroundMode="outline">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etSellPrice"
-            android:layout_width="match_parent"
+        <!-- Sell Price -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutSellPrice"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="@string/sell_price"
-            android:inputType="numberDecimal"
-            android:padding="16dp" />
-    </com.google.android.material.textfield.TextInputLayout>
+            app:layout_constraintTop_toBottomOf="@id/layoutProductName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_margin="16dp"
+            app:boxBackgroundMode="outline">
 
-    <!-- Cost Price -->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/layoutCostPrice"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/layoutSellPrice"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="16dp"
-        app:boxBackgroundMode="outline">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etSellPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/sell_price"
+                android:inputType="numberDecimal"
+                android:padding="16dp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etCostPrice"
-            android:layout_width="match_parent"
+        <!-- Cost Price -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutCostPrice"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="@string/cost_price"
-            android:inputType="numberDecimal"
-            android:padding="16dp" />
-    </com.google.android.material.textfield.TextInputLayout>
+            app:layout_constraintTop_toBottomOf="@id/layoutSellPrice"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_margin="16dp"
+            app:boxBackgroundMode="outline">
 
-    <!-- Slot Number -->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/layoutSlotNumber"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/layoutCostPrice"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="16dp"
-        app:boxBackgroundMode="outline">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etCostPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/cost_price"
+                android:inputType="numberDecimal"
+                android:padding="16dp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etSlotNumber"
-            android:layout_width="match_parent"
+        <!-- Slot Number -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutSlotNumber"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="@string/slot_number"
-            android:inputType="number"
-            android:padding="16dp" />
-    </com.google.android.material.textfield.TextInputLayout>
+            app:layout_constraintTop_toBottomOf="@id/layoutCostPrice"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_margin="16dp"
+            app:boxBackgroundMode="outline">
 
-    <!-- Product Image -->
-    <ImageView
-        android:id="@+id/productImageView"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="16dp"
-        android:contentDescription="Product Image"
-        app:layout_constraintTop_toBottomOf="@id/layoutSlotNumber"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:scaleType="centerCrop" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etSlotNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/slot_number"
+                android:inputType="number"
+                android:padding="16dp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- Choose Image Button -->
-    <Button
-        android:id="@+id/btnChooseImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Choose Image"
-        app:backgroundTint="@null"
-        android:background="@drawable/rectangle_solid_brown"
-        android:fontFamily="@font/nudmotoya"
-        app:layout_constraintTop_toBottomOf="@id/productImageView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp" />
-
-    <!-- Description -->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/layoutDescription"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/btnChooseImage"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="16dp"
-        app:boxBackgroundMode="outline">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etDescription"
-            android:layout_width="match_parent"
+        <!-- Description -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutDescription"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="@string/description"
-            android:padding="16dp" />
-    </com.google.android.material.textfield.TextInputLayout>
+            app:layout_constraintTop_toBottomOf="@id/layoutSlotNumber"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_margin="16dp"
+            app:boxBackgroundMode="outline">
 
-    <!-- Max Quantity -->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/layoutMaxQuantity"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/layoutDescription"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="16dp"
-        app:boxBackgroundMode="outline">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/description"
+                android:padding="16dp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etMaxQuantity"
-            android:layout_width="match_parent"
+        <!-- Max Quantity -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutMaxQuantity"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="@string/max_quantity"
-            android:inputType="number"
-            android:padding="16dp" />
-    </com.google.android.material.textfield.TextInputLayout>
+            app:layout_constraintTop_toBottomOf="@id/layoutDescription"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_margin="16dp"
+            app:boxBackgroundMode="outline">
 
-    <!-- Available Quantity -->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/layoutAvailableQuantity"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/layoutMaxQuantity"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="16dp"
-        app:boxBackgroundMode="outline">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etMaxQuantity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/max_quantity"
+                android:inputType="number"
+                android:padding="16dp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etAvailableQuantity"
-            android:layout_width="match_parent"
+        <!-- Available Quantity -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutAvailableQuantity"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="@string/available_quantity"
-            android:inputType="number"
-            android:padding="16dp" />
-    </com.google.android.material.textfield.TextInputLayout>
+            app:layout_constraintTop_toBottomOf="@id/layoutMaxQuantity"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_margin="16dp"
+            app:boxBackgroundMode="outline">
 
-    <!-- Submit Product Button -->
-    <Button
-        android:id="@+id/btnSubmitProduct"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/save_product"
-        android:layout_marginTop="@dimen/_20sdp"
-        android:layout_marginBottom="@dimen/_10sdp"
-        android:padding="16dp"
-        app:backgroundTint="@null"
-        android:background="@drawable/rectangle_solid_brown"
-        android:fontFamily="@font/nudmotoya"
-        app:layout_constraintTop_toBottomOf="@id/layoutAvailableQuantity"
-        app:layout_constraintStart_toStartOf="@id/layoutAvailableQuantity"
-        app:layout_constraintEnd_toEndOf="@id/layoutAvailableQuantity" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etAvailableQuantity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/available_quantity"
+                android:inputType="number"
+                android:padding="16dp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
-
+        <!-- Submit Product Button -->
+        <Button
+            android:id="@+id/btnSubmitProduct"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rectangle_solid_brown"
+            android:fontFamily="@font/nudmotoya"
+            android:padding="16dp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:text="@string/save_product"
+            app:backgroundTint="@null"
+            app:layout_constraintEnd_toEndOf="@+id/layoutAvailableQuantity"
+            app:layout_constraintStart_toStartOf="@+id/layoutAvailableQuantity"
+            app:layout_constraintTop_toBottomOf="@+id/layoutAvailableQuantity" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
-

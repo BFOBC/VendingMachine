@@ -10,6 +10,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.vendingmachineinventorymanagement.R
 import com.example.vendingmachineinventorymanagement.databinding.ActivityLoginBinding
+import com.example.vendingmachineinventorymanagement.extensionfunctions.createSingleInstanceIntent
 import com.example.vendingmachineinventorymanagement.extensionfunctions.getProgressDialog
 import com.google.firebase.auth.FirebaseAuth
 import com.example.vendingmachineinventorymanagement.extensionfunctions.isNetworkAvailable
@@ -58,7 +59,7 @@ class LoginActivity : AppCompatActivity() {
 
             } else {
                 val imageResId = resources.getIdentifier(
-                    "success_icon",
+                    "sad_icon",
                     "drawable",
                     packageName
                 )
@@ -74,23 +75,26 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun loginUser(email: String, password: String) {
+        val imageResId = resources.getIdentifier(
+            "sad_icon",
+            "drawable",
+            packageName
+        )
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 progressDialog.hide()
                 if (task.isSuccessful) {
-                    // Login success
-                    Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show()
-                    // Navigate to the next activity (e.g., MainActivity)
-                    val intent = Intent(this, Dashboard::class.java)
+                    val intent = createSingleInstanceIntent<Dashboard>()
                     finish()
                     startActivity(intent)
                 } else {
-                    // Login failure
-                    Toast.makeText(
-                        this,
+                    showCustomErrorDialog("Server Issue",
                         "Login failed: ${task.exception?.message}",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                        "retry",
+                        imageResId
+                    ) {
+                        loginUser(email,password)
+                    }
                 }
             }
     }

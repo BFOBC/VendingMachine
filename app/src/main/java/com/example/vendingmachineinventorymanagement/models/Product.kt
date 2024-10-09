@@ -1,10 +1,10 @@
 package com.example.vendingmachineinventorymanagement.models
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import kotlinx.serialization.Serializable
+import kotlinx.parcelize.Parcelize
 
-
-@Serializable
+@Parcelize
 data class Product(
     @SerializedName("slotId") var slotId: Int? = null,
     @SerializedName("slotNumber") var slotNumber: Int? = 0,
@@ -23,5 +23,4 @@ data class Product(
     @SerializedName("productCategoryId") var productCategoryId: Int? = null,
     @SerializedName("productTypeId") var productTypeId: Int? = null,
     @SerializedName("productURL") var productURL: String? = null,
-)
-
+) : Parcelable

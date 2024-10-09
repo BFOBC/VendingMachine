@@ -20,6 +20,7 @@ import com.example.vendingmachineinventorymanagement.R
 import com.example.vendingmachineinventorymanagement.utils.constansts.Constants.TBL_PRODUCTS
 import com.example.vendingmachineinventorymanagement.databinding.ActivityAddProdutcsBinding
 import com.example.vendingmachineinventorymanagement.databinding.ActivityLoginBinding
+import com.example.vendingmachineinventorymanagement.extensionfunctions.showCustomErrorDialog
 import com.example.vendingmachineinventorymanagement.models.Product
 import com.example.vendingmachineinventorymanagement.utils.singleClickListener
 import com.google.firebase.database.FirebaseDatabase
@@ -111,16 +112,38 @@ class AddProductsActivity : AppCompatActivity() {
             productImage = imageUrl // Save image URL
         )
 
+
         // Save the product to Firebase Realtime Database
         databaseReference.child(productId).setValue(product)
             .addOnSuccessListener {
                 progressDialog.dismiss() // Dismiss the dialog
-                Toast.makeText(this, "Product added successfully!", Toast.LENGTH_SHORT).show()
+                val imageResId = resources.getIdentifier(
+                    "ic_green_tick_icon",
+                    "drawable",
+                    packageName
+                )
+                showCustomErrorDialog("Uploaded",
+                    "Product added successfully",
+                    "OK",
+                    imageResId
+                ) {
+                }
                 // Clear the form after successful submission
                 clearForm()
             }
             .addOnFailureListener {
                 progressDialog.dismiss() // Dismiss the dialog
+                val imageResId = resources.getIdentifier(
+                    "sad_icon",
+                    "drawable",
+                    packageName
+                )
+                showCustomErrorDialog("Server Issue",
+                    "Product added successfully",
+                    "OK",
+                    imageResId
+                ) {
+                }
                 Toast.makeText(this, "Failed to add product", Toast.LENGTH_SHORT).show()
             }
     }

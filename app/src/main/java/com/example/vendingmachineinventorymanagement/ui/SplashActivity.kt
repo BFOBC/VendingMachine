@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.vendingmachineinventorymanagement.R
+import com.example.vendingmachineinventorymanagement.extensionfunctions.createSingleInstanceIntent
 
 class SplashActivity : AppCompatActivity() {
 
@@ -23,7 +24,7 @@ class SplashActivity : AppCompatActivity() {
         }
         // Delay transition to the login screen for 3 seconds
         Handler(Looper.getMainLooper()).postDelayed({
-            val intent = Intent(this, LoginActivity::class.java)
+            val intent = createSingleInstanceIntent<LoginActivity>()
             startActivity(intent)
             finish()
         }, 3000)
