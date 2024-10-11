@@ -70,7 +70,8 @@
                     android:layout_width="@dimen/_25sdp"
                     android:layout_height="@dimen/_25sdp"
                     android:padding="@dimen/_5sdp"
-                    android:src="@drawable/email_con" />
+                    android:src="@drawable/email_con"
+                    app:tint="@color/black" />
 
                 <EditText
                     android:id="@+id/etEmail"
@@ -78,6 +79,7 @@
                     android:layout_height="@dimen/_20sdp"
                     android:background="@null"
                     android:hint="@string/email"
+                    android:layout_gravity="center"
                     android:text="fillip@gmail.com" />
             </LinearLayout>
 
@@ -113,7 +115,7 @@
                     android:layout_width="@dimen/_25sdp"
                     android:layout_height="@dimen/_25sdp"
                     android:padding="@dimen/_5sdp"
-                    android:src="@drawable/email_con" />
+                    android:src="@drawable/baseline_lock_24" />
 
                 <EditText
                     android:id="@+id/etPassword"
@@ -121,6 +123,7 @@
                     android:layout_height="@dimen/_20sdp"
                     android:background="@null"
                     android:hint="@string/password"
+                    android:layout_gravity="center"
                     android:inputType="textPassword"
                     android:text="Test@123" />
             </LinearLayout>

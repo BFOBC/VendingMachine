@@ -20,6 +20,7 @@ import com.example.vendingmachineinventorymanagement.R
 import com.example.vendingmachineinventorymanagement.utils.constansts.Constants.TBL_PRODUCTS
 import com.example.vendingmachineinventorymanagement.databinding.ActivityAddProdutcsBinding
 import com.example.vendingmachineinventorymanagement.databinding.ActivityLoginBinding
+import com.example.vendingmachineinventorymanagement.extensionfunctions.isNetworkAvailable
 import com.example.vendingmachineinventorymanagement.extensionfunctions.showCustomErrorDialog
 import com.example.vendingmachineinventorymanagement.models.Product
 import com.example.vendingmachineinventorymanagement.utils.singleClickListener
@@ -59,7 +60,22 @@ class AddProductsActivity : AppCompatActivity() {
         binding.apply {
             btnSubmitProduct.setOnClickListener {
                 if (isValid()) {
-                    uploadImageAndSaveProduct()
+                    if (isNetworkAvailable(this@AddProductsActivity)) {
+                        uploadImageAndSaveProduct()
+                    }else{
+                        val imageResId = resources.getIdentifier(
+                            "sad_icon",
+                            "drawable",
+                            packageName
+                        )
+                        showCustomErrorDialog("No Internet",
+                            "Check your internet",
+                            "retry",
+                            imageResId
+                        ) {
+                            uploadImageAndSaveProduct()
+                        }
+                    }
                 }
             }
         }
@@ -103,8 +119,8 @@ class AddProductsActivity : AppCompatActivity() {
         val product = Product(
             productId = productId,
             productName = binding.etProductName.text.toString().trim(),
-            productSellingPrice = binding.etSellPrice.text.toString().trim(),
-            productCostPrice = binding.etCostPrice.text.toString().trim(),
+            productSellingPrice = binding.etSellPrice.text.toString().trim().toInt(),
+            productCostPrice = binding.etCostPrice.text.toString().trim().toInt(),
             slotNumber = binding.etSlotNumber.text.toString().trim().toInt(),
             productDescription = binding.etDescription.text.toString().trim(),
             maxQuantity = binding.etMaxQuantity.text.toString().trim().toInt(),

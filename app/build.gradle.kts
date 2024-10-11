@@ -104,11 +104,7 @@ dependencies {
     }
     //Retrofit
     val retrofitVersion = "2.9.0"
-    implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
-    implementation("com.squareup.retrofit2:converter-gson:$retrofitVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1")
-    implementation("com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0")
-    implementation("com.squareup.retrofit2:converter-scalars:2.1.0")
 
     // Import the BoM for the Firebase platform
     implementation(platform("com.google.firebase:firebase-bom:33.4.0"))
@@ -125,4 +121,6 @@ dependencies {
     kapt("com.github.bumptech.glide:compiler:4.12.0")
     //circle image
     implementation("de.hdodenhof:circleimageview:3.1.0")
+    implementation("com.licheedev:android-serialport:2.1.3")
+
 }

@@ -8,6 +8,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.vendingmachineinventorymanagement.R
 import com.example.vendingmachineinventorymanagement.databinding.ActivityDashboardBinding
 import com.example.vendingmachineinventorymanagement.extensionfunctions.createSingleInstanceIntent
+import com.example.vendingmachineinventorymanagement.testvm.MainActivity
 import com.example.vendingmachineinventorymanagement.utils.singleClickListener
 
 class Dashboard : AppCompatActivity() {
@@ -50,6 +51,10 @@ class Dashboard : AppCompatActivity() {
 
             R.id.itemViewProducts -> {
                 val intent = createSingleInstanceIntent<ViewProductsActivity>()
+                startActivity(intent)
+            }
+            R.id.itemViewStandardVM -> {
+                val intent = createSingleInstanceIntent<MainActivity>()
                 startActivity(intent)
             }
             else -> {

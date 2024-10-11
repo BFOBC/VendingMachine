@@ -52,7 +52,7 @@ class LoginActivity : AppCompatActivity() {
             }
 
             // Perform Firebase authentication
-            if (isNetworkAvailable(this)) {
+            if (isNetworkAvailable(this@LoginActivity)) {
                 progressDialog = getProgressDialog(false)
                 progressDialog.show()
                 loginUser(email, password)

@@ -52,7 +52,7 @@
             android:name=".ui.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".testvm.MainActivity"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>

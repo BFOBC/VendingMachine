@@ -83,15 +83,16 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <LinearLayout
-                    android:id="@+id/rootViewDotsHomeScreen"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_40sdp"
-                    android:layout_gravity="center|bottom"
-                    android:gravity="center"
-                    android:orientation="horizontal" />
 
             </FrameLayout>
+
+            <LinearLayout
+                android:id="@+id/rootViewDotsHomeScreen"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_gravity="center|bottom"
+                android:gravity="center"
+                android:orientation="horizontal" />
 
             <androidx.coordinatorlayout.widget.CoordinatorLayout
                 android:id="@+id/parentRootMainActivity"
@@ -157,7 +158,23 @@
                     android:layout_gravity="center"
                     android:indeterminate="true"
                     android:indeterminateTint="@color/white" />
+                <TextView
+                    android:id="@+id/tvNoProducts"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:visibility="gone"
+                    android:fontFamily="@font/nudmotoya"
+                    android:layout_gravity="center"
+                    android:includeFontPadding="false"
+                    android:singleLine="true"
+                    android:text="@string/no_products_available"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_14ssp"/>
+
             </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
 
         </LinearLayout>
 

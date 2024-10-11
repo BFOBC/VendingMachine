@@ -44,6 +44,7 @@ class ViewProductsActivity : AppCompatActivity() {
     }
 
     private fun initViews() {
+        readData()
         // Set up the refresh listener
         binding.pullToRefresh.setOnRefreshListener { // Refresh your data here
             productViewModel.fetchItems()
@@ -207,27 +208,32 @@ class ViewProductsActivity : AppCompatActivity() {
         )
         // Observe the LiveData from ViewModel
         productViewModel.items.observe(this) { itemList ->
-            if (itemList != null) {
+            binding.progressbar.hide()
+            if (itemList != null && itemList.isNotEmpty()) {
+                hideLoadingViews()
                 setProductsAdapter(itemList)
             } else {
                 showCustomErrorDialog("Data not found",
                     "No Products Available",
-                    "retry",
+                    "OK",
                     imageResId
                 ) {
-                    productViewModel.fetchItems()
                 }
-                Toast.makeText(this, "No data found", Toast.LENGTH_SHORT).show()
+                hideLoadingViews()
+                binding.tvNoProducts.visible()
             }
         }
+    }
+    private fun hideLoadingViews(){
+        binding.includeProductsLayout.shimmer.hide()
+        binding.progressbar.hide()
     }
 
     private fun setProductsAdapter(productsList: List<Product>) {
         binding.includeProductsLayout.shimmer.startShimmerAnimation()
         binding.includeProductsLayout.shimmer.stopShimmerAnimation()
-        binding.includeProductsLayout.shimmer.hide()
         binding.includeProductsLayout.rvProducts.visible()
-        binding.progressbar.hide()
+
         productsAdapter = ProductsAdapter(this, productsList, productsItemOnClick)
         binding.includeProductsLayout.rvProducts.adapter = productsAdapter
     }
