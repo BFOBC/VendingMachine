@@ -1,4 +1,4 @@
-package com.example.vendingmachineinventorymanagement.ui
+package com.example.vendingmachineinventorymanagement.ui.admin
 
 import android.Manifest
 import android.app.Activity
@@ -14,16 +14,11 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.example.vendingmachineinventorymanagement.R
 import com.example.vendingmachineinventorymanagement.utils.constansts.Constants.TBL_PRODUCTS
 import com.example.vendingmachineinventorymanagement.databinding.ActivityAddProdutcsBinding
-import com.example.vendingmachineinventorymanagement.databinding.ActivityLoginBinding
 import com.example.vendingmachineinventorymanagement.extensionfunctions.isNetworkAvailable
 import com.example.vendingmachineinventorymanagement.extensionfunctions.showCustomErrorDialog
 import com.example.vendingmachineinventorymanagement.models.Product
-import com.example.vendingmachineinventorymanagement.utils.singleClickListener
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import java.util.UUID

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_navigation_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        tools:layout="@layout/fragment_home"
+        android:name="com.example.vendingmachineinventorymanagement.ui.customer.HomeFragment"
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_checkBalanceFragment"
+            app:destination="@id/checkBalanceFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_redeemFragment"
+            app:destination="@id/redeemFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/redeemFragment"
+        tools:layout="@layout/fragment_redeem"
+        android:name="com.example.vendingmachineinventorymanagement.ui.customer.RedeemFragment"
+        android:label="RedeemFragment" />
+    <fragment
+        android:id="@+id/checkBalanceFragment"
+        android:name="com.example.vendingmachineinventorymanagement.ui.customer.CheckBalanceFragment"
+        android:label="fragment_check_balance"
+        tools:layout="@layout/fragment_check_balance" />
+</navigation>

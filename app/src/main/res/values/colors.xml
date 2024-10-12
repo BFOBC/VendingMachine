@@ -3,7 +3,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="dark_brown">#6C331E</color>
+    <color name="dark_brown">#99CC00</color>
     <color name="light_gray">#D9D9D9</color>
     <color name="light_gray2">#F4F4F4</color>
     <color name="dark_gray">#BDBBBB</color>
@@ -11,6 +11,8 @@
     <color name="checkboxUncheckedBtnTintColor">#CCCCCC</color>
     <color name="checkboxCheckedBtnTintColor">#252525</color>
     <color name="gray">#BDBBBB</color>
+    <color name="green">#99CC00</color>
+    <color name="blue">#33B5E5</color>
     //cart screen colors
 
     <color name="bg_color_1">#F8E0D7</color>

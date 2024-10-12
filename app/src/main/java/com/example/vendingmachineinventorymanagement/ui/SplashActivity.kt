@@ -1,6 +1,5 @@
 package com.example.vendingmachineinventorymanagement.ui
 
-import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -10,6 +9,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.vendingmachineinventorymanagement.R
 import com.example.vendingmachineinventorymanagement.extensionfunctions.createSingleInstanceIntent
+import com.example.vendingmachineinventorymanagement.ui.admin.LoginActivity
 
 class SplashActivity : AppCompatActivity() {
 

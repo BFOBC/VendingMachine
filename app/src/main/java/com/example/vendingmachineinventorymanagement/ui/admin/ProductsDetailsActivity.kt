@@ -1,4 +1,4 @@
-package com.example.vendingmachineinventorymanagement.ui
+package com.example.vendingmachineinventorymanagement.ui.admin
 
 import android.os.Bundle
 import android.widget.Toast
@@ -6,10 +6,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.vendingmachineinventorymanagement.R
-import com.example.vendingmachineinventorymanagement.databinding.ActivityDashboardBinding
 import com.example.vendingmachineinventorymanagement.databinding.ActivityProductsDetailsBinding
 import com.example.vendingmachineinventorymanagement.extensionfunctions.isNetworkAvailable
 import com.example.vendingmachineinventorymanagement.extensionfunctions.loadImageIntoImageView

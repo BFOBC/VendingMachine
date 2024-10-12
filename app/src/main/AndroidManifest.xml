@@ -25,7 +25,13 @@
         android:theme="@style/Theme.VendingMachineInventoryManagement"
         tools:targetApi="31">
         <activity
-            android:name=".ui.ProductsDetailsActivity"
+            android:name=".ui.customer.CheckBalanceActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.customer.WellComeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.admin.ProductsDetailsActivity"
             android:exported="false" />
         <activity
             android:name=".ui.SplashActivity"
@@ -37,19 +43,19 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.ViewProductsActivity"
+            android:name=".ui.admin.ViewProductsActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.AddProductsActivity"
+            android:name=".ui.admin.AddProductsActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.Dashboard"
+            android:name=".ui.admin.Dashboard"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.LoginActivity"
+            android:name=".ui.admin.LoginActivity"
             android:exported="false" />
         <activity
             android:name=".testvm.MainActivity"

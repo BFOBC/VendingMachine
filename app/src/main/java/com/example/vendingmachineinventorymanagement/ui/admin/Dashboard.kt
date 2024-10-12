@@ -1,6 +1,5 @@
-package com.example.vendingmachineinventorymanagement.ui
+package com.example.vendingmachineinventorymanagement.ui.admin
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity

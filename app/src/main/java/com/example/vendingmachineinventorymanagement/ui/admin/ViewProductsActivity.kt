@@ -1,15 +1,12 @@
-package com.example.vendingmachineinventorymanagement.ui
+package com.example.vendingmachineinventorymanagement.ui.admin
 
-import android.content.Context
 import android.net.Uri
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.LinearLayout
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import com.example.vendingmachineinventorymanagement.R
 import com.example.vendingmachineinventorymanagement.adapters.ProductsAdapter
