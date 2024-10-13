@@ -36,9 +36,7 @@ class Dashboard : AppCompatActivity() {
             itemViewStandardVM.setOnClickListener {
                 onModuleClick(itemViewStandardVM)
             }
-            itemViewTestPrinter.setOnClickListener {
-                onModuleClick(itemViewTestPrinter)
-            }
+
         }
     }
     private fun onModuleClick(itemView: ConstraintLayout) {

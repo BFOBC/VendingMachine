@@ -18,6 +18,7 @@ import com.example.vendingmachineinventorymanagement.extensionfunctions.visible
 import com.example.vendingmachineinventorymanagement.models.Product
 import com.example.vendingmachineinventorymanagement.ui.media.CustomMediaController
 import com.example.vendingmachineinventorymanagement.ui.media.MediaItemModel
+import com.example.vendingmachineinventorymanagement.utils.constansts.Constants.ADMIN
 import com.example.vendingmachineinventorymanagement.utils.enums.MediaType
 import com.example.vendingmachineinventorymanagement.viewmodels.ProductViewModel
 import kotlinx.coroutines.delay
@@ -231,7 +232,7 @@ class ViewProductsActivity : AppCompatActivity() {
         binding.includeProductsLayout.shimmer.stopShimmerAnimation()
         binding.includeProductsLayout.rvProducts.visible()
 
-        productsAdapter = ProductsAdapter(this, productsList, productsItemOnClick)
+        productsAdapter = ProductsAdapter(ADMIN,this, productsList, productsItemOnClick)
         binding.includeProductsLayout.rvProducts.adapter = productsAdapter
     }
     private val productsItemOnClick: (Product) -> Unit = { item ->

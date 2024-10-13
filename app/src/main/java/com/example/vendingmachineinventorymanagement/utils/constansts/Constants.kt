@@ -1,7 +1,8 @@
 package com.example.vendingmachineinventorymanagement.utils.constansts
 
 object Constants {
-
+    const val CUSTOMER = "Customer"
+    const val ADMIN = "Admin"
     const val BUNDLE_NOTE_ID = "bundle_note_id"
     const val PRINTER_SERIAL_PORT = "/dev/ttyS4"
     const val BILL_ACCEPTOR_SERIAL_PORT = "/dev/ttyS1"

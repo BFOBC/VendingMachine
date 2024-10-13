@@ -7,9 +7,11 @@ import com.example.vendingmachineinventorymanagement.databinding.CustomItemCellB
 import com.example.vendingmachineinventorymanagement.models.Product
 import com.example.vendingmachineinventorymanagement.utils.baseclasses.BaseAdapter
 import com.example.vendingmachineinventorymanagement.extensionfunctions.loadImageIntoImageView
+import com.example.vendingmachineinventorymanagement.utils.constansts.Constants.ADMIN
 
 class ProductsAdapter(
-    val mContext:Context,
+    val type: String,
+    val mContext: Context,
     var dataList: List<Product>,
     val productsItemOnClick: (Product) -> Unit
 ) :
@@ -24,6 +26,12 @@ class ProductsAdapter(
     ) {
         val viewProductResponse: Product = dataList[position]
         binding.apply {
+            if (type== ADMIN){
+                btnOrder.setText("view")
+            }else{
+                btnOrder.setText("vend")
+            }
+            tvSlotNumber.text = "SLOT #"+viewProductResponse.slotNumber.toString()
             tvItemName.text = viewProductResponse.productName
             tvItemPrice.text = CURRENCY_SYMBOL+ " " +viewProductResponse.productSellingPrice
             // Load image using Glide or any other image loading library

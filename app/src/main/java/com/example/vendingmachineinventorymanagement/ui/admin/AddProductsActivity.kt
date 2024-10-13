@@ -11,14 +11,19 @@ import android.os.Environment
 import android.provider.Settings
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.vendingmachineinventorymanagement.utils.constansts.Constants.TBL_PRODUCTS
 import com.example.vendingmachineinventorymanagement.databinding.ActivityAddProdutcsBinding
+import com.example.vendingmachineinventorymanagement.extensionfunctions.hide
 import com.example.vendingmachineinventorymanagement.extensionfunctions.isNetworkAvailable
 import com.example.vendingmachineinventorymanagement.extensionfunctions.showCustomErrorDialog
+import com.example.vendingmachineinventorymanagement.extensionfunctions.showCustomToast
+import com.example.vendingmachineinventorymanagement.extensionfunctions.visible
 import com.example.vendingmachineinventorymanagement.models.Product
+import com.example.vendingmachineinventorymanagement.viewmodels.ProductViewModel
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import java.util.UUID
@@ -32,6 +37,7 @@ class AddProductsActivity : AppCompatActivity() {
     private val databaseReference = FirebaseDatabase.getInstance().getReference(TBL_PRODUCTS)
     private var imageUrl: String=""
     private lateinit var progressDialog: ProgressDialog // Declare ProgressDialog
+    private val productViewModel: ProductViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +46,17 @@ class AddProductsActivity : AppCompatActivity() {
         binding = ActivityAddProdutcsBinding.inflate(layoutInflater)
         setContentView(binding.root)
         checkAndRequestManageExternalStoragePermission()
+        readData()
         initViews()
+    }
+
+    private fun readData() {
+        // Observe the LiveData from ViewModel
+        productViewModel.items.observe(this) { itemList ->
+            if (itemList != null && itemList.isNotEmpty()) {
+
+            }
+        }
     }
 
     private fun initViews() {
@@ -94,7 +110,10 @@ class AddProductsActivity : AppCompatActivity() {
                     imageRef.downloadUrl.addOnSuccessListener { uri ->
                         // Get the download URL for the image and save product data
                         val imageUrl = uri.toString()
-                        saveProductToDatabase(imageUrl)
+                        val slotNumber = binding.etSlotNumber.text.toString().trim().toInt()
+                        // Call readData with the entered slot number to validate before saving
+                        readData(slotNumber,imageUrl)
+                        //saveProductToDatabase(imageUrl)
                     }
                 }
                 .addOnFailureListener {
@@ -105,8 +124,27 @@ class AddProductsActivity : AppCompatActivity() {
             Toast.makeText(this, "Please select an image", Toast.LENGTH_SHORT).show()
         }
     }
-
+    private fun readData(slotNumber: Int,imageUrl:String) {
+        productViewModel.items.observe(this) { itemList ->
+            if (itemList != null) {
+                // Check if slot is already occupied
+                val existingProduct = isSlotOccupied(slotNumber, itemList)
+                if (existingProduct != null) {
+                    // Show toast with the product name
+                    showCustomToast("Slot $slotNumber is already occupied by ${existingProduct.productName}")
+                    progressDialog.dismiss()
+                } else {
+                    // Proceed with saving the new product
+                    saveProductToDatabase(imageUrl)
+                }
+            }
+        }
+    }
+    private fun isSlotOccupied(slotNumber: Int, itemList: List<Product>): Product? {
+        return itemList.find { it.slotNumber == slotNumber }
+    }
     private fun saveProductToDatabase(imageUrl: String) {
+
         // Generate a unique product ID
         val productId = UUID.randomUUID().toString()
 

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">VendingMachineInventoryManagement</string>
+    <string name="app_name">VendingApp</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="admin_login">Admin Login</string>

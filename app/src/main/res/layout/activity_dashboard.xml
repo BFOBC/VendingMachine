@@ -21,7 +21,7 @@
             android:text="@string/manage_products"
             android:textAllCaps="false"
             android:textSize="@dimen/_14ssp"
-            android:textColor="@color/dark_brown"
+            android:textColor="@color/blue"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -40,7 +40,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_200sdp"
+                android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/labelToolbar">
@@ -63,13 +63,14 @@
                         android:id="@+id/imageViewItem"
                         android:layout_width="@dimen/_35sdp"
                         android:layout_height="@dimen/_35sdp"
-                        android:padding="@dimen/_8sdp"
                         android:background="@drawable/circle_dashboard_widget"
+                        android:padding="@dimen/_8sdp"
                         android:src="@drawable/vending_icon"
                         app:layout_constraintBottom_toTopOf="@+id/tvCanister"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/blue" />
 
                     <TextView
                         android:id="@+id/tvCanister"
@@ -79,7 +80,7 @@
                         android:fontFamily="@font/nudmotoya"
                         android:includeFontPadding="false"
                         android:text="Add Products"
-                        android:textColor="@color/dark_brown"
+                        android:textColor="@color/blue"
                         android:textSize="@dimen/_7ssp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -103,13 +104,14 @@
                         android:id="@+id/imageViewTestCoffee"
                         android:layout_width="@dimen/_35sdp"
                         android:layout_height="@dimen/_35sdp"
-                        android:padding="@dimen/_8sdp"
                         android:background="@drawable/circle_dashboard_widget"
+                        android:padding="@dimen/_8sdp"
                         android:src="@drawable/vending_icon"
                         app:layout_constraintBottom_toTopOf="@+id/tvTestCoffee"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/blue" />
 
                     <TextView
                         android:id="@+id/tvTestCoffee"
@@ -119,7 +121,7 @@
                         android:fontFamily="@font/nudmotoya"
                         android:includeFontPadding="false"
                         android:text="View Products"
-                        android:textColor="@color/dark_brown"
+                        android:textColor="@color/blue"
                         android:textSize="@dimen/_7ssp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -130,12 +132,12 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/itemViewStandardVM"
-                    android:layout_width="@dimen/_105sdp"
-                    android:layout_height="@dimen/_95sdp"
-                    android:layout_margin="@dimen/_5sdp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
                     android:background="@drawable/rectangle_outline_brown"
                     android:padding="@dimen/_20sdp"
-                    app:layout_constraintEnd_toEndOf="@+id/itemAddProducts"
+                    app:layout_constraintEnd_toEndOf="@+id/itemViewProducts"
                     app:layout_constraintStart_toStartOf="@+id/itemAddProducts"
                     app:layout_constraintTop_toBottomOf="@+id/itemAddProducts">
 
@@ -143,13 +145,14 @@
                         android:id="@+id/imageViewTestStandardVM"
                         android:layout_width="@dimen/_35sdp"
                         android:layout_height="@dimen/_35sdp"
-                        android:padding="@dimen/_8sdp"
                         android:background="@drawable/circle_dashboard_widget"
+                        android:padding="@dimen/_8sdp"
                         android:src="@drawable/vending_icon"
                         app:layout_constraintBottom_toTopOf="@+id/tvTestStandardVM"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/blue" />
 
                     <TextView
                         android:id="@+id/tvTestStandardVM"
@@ -159,7 +162,7 @@
                         android:fontFamily="@font/nudmotoya"
                         android:includeFontPadding="false"
                         android:text="Test VM"
-                        android:textColor="@color/dark_brown"
+                        android:textColor="@color/blue"
                         android:textSize="@dimen/_7ssp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -168,51 +171,12 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/itemViewTestPrinter"
-                    android:layout_width="@dimen/_105sdp"
-                    android:layout_height="@dimen/_95sdp"
-                    android:layout_margin="@dimen/_5sdp"
-                    android:background="@drawable/rectangle_outline_brown"
-                    android:padding="@dimen/_20sdp"
-                    app:layout_constraintEnd_toEndOf="@+id/itemViewProducts"
-                    app:layout_constraintStart_toStartOf="@+id/itemViewProducts"
-                    app:layout_constraintTop_toBottomOf="@+id/itemViewProducts">
-
-                    <ImageView
-                        android:id="@+id/imageViewTestPrinter"
-                        android:layout_width="@dimen/_35sdp"
-                        android:layout_height="@dimen/_35sdp"
-                        android:padding="@dimen/_8sdp"
-                        android:background="@drawable/circle_dashboard_widget"
-                        android:src="@drawable/vending_icon"
-                        app:layout_constraintBottom_toTopOf="@+id/tvTestPrinter"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/tvTestPrinter"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_10sdp"
-                        android:fontFamily="@font/nudmotoya"
-                        android:includeFontPadding="false"
-                        android:text="Test VM"
-                        android:textColor="@color/dark_brown"
-                        android:textSize="@dimen/_7ssp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/imageViewTestPrinter" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnExit"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/_40sdp"
                     android:layout_marginTop="@dimen/_30sdp"
-                    android:background="@drawable/rectangle_solid_brown"
+                    android:background="@color/green"
                     android:fontFamily="@font/nudmotoya"
                     android:text="@string/exit"
                     android:textAllCaps="false"

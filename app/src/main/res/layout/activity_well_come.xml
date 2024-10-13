@@ -23,10 +23,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
+            <ImageView
+                android:id="@+id/imgAdminSetting"
+                android:layout_gravity="end"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_100sdp"/>
             <VideoView
                 android:id="@+id/videoView"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_200sdp"
+                android:keepScreenOn="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -97,9 +103,8 @@
         android:layout_height="wrap_content"
         android:background="@color/white"
         app:defaultNavHost="true"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout"
         app:navGraph="@navigation/home_navigation_graph" />
 </androidx.constraintlayout.widget.ConstraintLayout>
