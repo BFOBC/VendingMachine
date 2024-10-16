@@ -161,7 +161,7 @@
                         android:layout_marginTop="@dimen/_10sdp"
                         android:fontFamily="@font/nudmotoya"
                         android:includeFontPadding="false"
-                        android:text="Test VM"
+                        android:text="@string/technical_setting"
                         android:textColor="@color/blue"
                         android:textSize="@dimen/_7ssp"
                         app:layout_constraintEnd_toEndOf="parent"
