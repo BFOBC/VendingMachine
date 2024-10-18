@@ -14,9 +14,9 @@ fun ImageView.setupAdminSetting(context: Context, totalAttempts: Int = 4, onAdmi
     this.singleClickListener {
         count++
         val remainingAttempts = totalAttempts - count
-        if (remainingAttempts > 0) {
+    /*    if (remainingAttempts > 0) {
             context.showToast("You are $remainingAttempts away from the Admin Settings")
-        }
+        }*/
         if (count == totalAttempts) {
             onAdminLogin.invoke()
             count = 0

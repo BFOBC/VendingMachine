@@ -22,4 +22,6 @@ object Constants {
     const val VEND_LIST = "productListJson"
     const val TBL_PRODUCTS = "VendingMachineProducts"
     const val BAUD_RATE=9600
+    const val VENDINGMACHINEMEDIA="VendingMachineMedia"
+
 }

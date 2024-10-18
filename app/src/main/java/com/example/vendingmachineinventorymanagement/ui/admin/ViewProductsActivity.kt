@@ -40,7 +40,11 @@ class ViewProductsActivity : AppCompatActivity() {
         getScreenSize()
         initViews()
     }
-
+    override fun onResume() {
+        super.onResume()
+        productViewModel.fetchItems()  // Re-fetch data
+        readData()  // Observe the updated data
+    }
     private fun initViews() {
         readData()
         // Set up the refresh listener

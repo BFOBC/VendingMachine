@@ -1,11 +1,24 @@
 package com.example.vendingmachineinventorymanagement.ui.admin
 
+import android.Manifest
+import android.app.Activity
+import android.app.ProgressDialog
+import android.content.Context
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
+import android.os.Environment
+import android.provider.Settings
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import com.example.vendingmachineinventorymanagement.R
 import com.example.vendingmachineinventorymanagement.databinding.ActivityProductsDetailsBinding
 import com.example.vendingmachineinventorymanagement.extensionfunctions.isNetworkAvailable
@@ -14,11 +27,19 @@ import com.example.vendingmachineinventorymanagement.extensionfunctions.showCust
 import com.example.vendingmachineinventorymanagement.models.Product
 import com.example.vendingmachineinventorymanagement.utils.singleClickListener
 import com.example.vendingmachineinventorymanagement.viewmodels.ProductViewModel
+import com.google.firebase.storage.FirebaseStorage
+import java.util.UUID
 
 class ProductsDetailsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityProductsDetailsBinding
     private val productViewModel: ProductViewModel by viewModels()
-
+    private val PICK_IMAGE_REQUEST = 1
+    private var imageUri: Uri? = null
+    private val STORAGE_PERMISSION_CODE = 101
+    private val storageReference = FirebaseStorage.getInstance().reference
+    private lateinit var progressDialog: ProgressDialog // Declare ProgressDialog
+    private  var isImageSelected:Boolean=false
+    private lateinit var product:Product
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -26,10 +47,103 @@ class ProductsDetailsActivity : AppCompatActivity() {
         setContentView(binding.root)
         initViews()
     }
+    private fun checkPermission(): Boolean {
+        return if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
+            // For Android 13 and above
+            ContextCompat.checkSelfPermission(
+                this, Manifest.permission.READ_MEDIA_IMAGES
+            ) == PackageManager.PERMISSION_GRANTED
+        } else {
+            // For Android 12 and below
+            ContextCompat.checkSelfPermission(
+                this, Manifest.permission.READ_EXTERNAL_STORAGE
+            ) == PackageManager.PERMISSION_GRANTED
+        }
+    }
+    // Open the gallery for image selection
+    private fun openGallery() {
+        val intent = Intent(Intent.ACTION_GET_CONTENT)
+        intent.type = "image/*"
+        startActivityForResult(intent, PICK_IMAGE_REQUEST)
+    }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
 
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null) {
+            // Get the selected image URI
+            imageUri = data.data!!
+
+            // Set the image to the ImageView
+            binding.productImageView.setImageURI(imageUri)
+        }
+    }
+
+    private fun requestStoragePermission() {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
+            // Request READ_MEDIA_IMAGES for Android 13 and above
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(Manifest.permission.READ_MEDIA_IMAGES),
+                STORAGE_PERMISSION_CODE
+            )
+        } else {
+            // Request READ_EXTERNAL_STORAGE for older Android versions
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
+                STORAGE_PERMISSION_CODE
+            )
+        }
+    }
+    private fun checkAndRequestManageExternalStoragePermission() {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R) {
+            // Check if permission is granted
+            if (!Environment.isExternalStorageManager()) {
+                try {
+                    // Open settings to grant access to all files
+                    val intent = Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION)
+                    intent.data = Uri.parse("package:$packageName")
+                    startActivityForResult(intent, STORAGE_PERMISSION_CODE)
+                } catch (e: Exception) {
+                    val intent = Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION)
+                    startActivityForResult(intent, STORAGE_PERMISSION_CODE)
+                }
+            }
+        } else {
+            // For Android versions below R, request traditional permissions
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE),
+                STORAGE_PERMISSION_CODE
+            )
+        }
+    }
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == STORAGE_PERMISSION_CODE) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // Permission granted
+                Toast.makeText(this, "Storage Permission Granted", Toast.LENGTH_SHORT).show()
+            } else {
+                // Permission denied
+                Toast.makeText(this, "Storage Permission Denied", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
     private fun initViews() {
-        val product = intent.getParcelableExtra<Product>("product_key")
+        setupKeyboardDismissListeners()
 
+        binding.btnChooseImage.setOnClickListener {
+            if (checkPermission()) {
+                openGallery()
+            } else {
+                requestStoragePermission()
+            }
+            isImageSelected=true
+        }
+        if (intent.getParcelableExtra<Product>("product_key")!=null){
+            product = intent.getParcelableExtra<Product>("product_key")!!
+        }
         // Check if the product is not null and set the data to the layout
         product?.let {
             binding.etProductName.setText(it.productName)
@@ -100,6 +214,9 @@ class ProductsDetailsActivity : AppCompatActivity() {
             //call the update fun to update values in database
             if (isValid()){
                 if (isNetworkAvailable(this@ProductsDetailsActivity)) {
+                    if (isImageSelected){
+                        uploadImageAndSaveProduct()
+                    }
                     productViewModel.updateDataInFirebase(product?.productId.toString(),updatedProductData)
                 }else{
                     val imageResId = resources.getIdentifier(
@@ -112,6 +229,9 @@ class ProductsDetailsActivity : AppCompatActivity() {
                         "retry",
                         imageResId
                     ) {
+                        if (isImageSelected){
+                            uploadImageAndSaveProduct()
+                        }
                         productViewModel.updateDataInFirebase(product?.productId.toString(),updatedProductData)
                     }
                 }
@@ -212,4 +332,53 @@ class ProductsDetailsActivity : AppCompatActivity() {
         return isValid
     }
 
+    private fun uploadImageAndSaveProduct() {
+        if (imageUri != null) {
+            // Show the progress dialog
+            progressDialog = ProgressDialog(this).apply {
+                setMessage("Uploading product...")
+                setCancelable(false) // Prevent canceling the dialog
+                show() // Show the dialog
+            }
+
+            // Generate a unique ID for the product image
+            val imageId = UUID.randomUUID().toString()
+            val imageRef = storageReference.child("product_images/$imageId.jpg")
+
+            // Upload image to Firebase Storage
+            imageRef.putFile(imageUri!!)
+                .addOnSuccessListener {
+                    imageRef.downloadUrl.addOnSuccessListener { uri ->
+                        // Get the download URL for the image and save product data
+                        val imageUrl = uri.toString()
+                        productViewModel.updateImagePath(product?.productId.toString(),imageUrl)
+                    }
+                }
+                .addOnFailureListener {
+                    progressDialog.dismiss() // Dismiss the dialog
+                    Toast.makeText(this, "Failed to upload image", Toast.LENGTH_SHORT).show()
+                }
+        } else {
+            Toast.makeText(this, "Please select an image", Toast.LENGTH_SHORT).show()
+        }
+    }
+    private fun setupKeyboardDismissListeners() {
+        // List all the EditText fields that need this behavior
+        val editTexts = listOf(binding.etProductName, binding.etSellPrice, binding.etCostPrice, binding.etSlotNumber,
+            binding.etDescription, binding.etMaxQuantity, binding.etAvailableQuantity)
+
+        // Apply focus change listener to each EditText
+        editTexts.forEach { editText ->
+            editText.setOnFocusChangeListener { view, hasFocus ->
+                if (!hasFocus) {
+                    hideKeyboard(view)
+                }
+            }
+        }
+    }
+
+    private fun hideKeyboard(view: View) {
+        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(view.windowToken, 0)
+    }
 }

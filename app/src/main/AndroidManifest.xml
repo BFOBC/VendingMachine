@@ -49,10 +49,12 @@
         <activity
             android:name=".ui.admin.ViewProductsActivity"
             android:exported="false"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
+
         <activity
             android:name=".ui.admin.AddProductsActivity"
             android:exported="false"
+            android:windowSoftInputMode="adjustResize"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.admin.Dashboard"

@@ -80,7 +80,7 @@
                         android:fontFamily="@font/nudmotoya"
                         android:includeFontPadding="false"
                         android:text="Add Products"
-                        android:textColor="@color/blue"
+                        android:textColor="@color/white"
                         android:textSize="@dimen/_7ssp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -121,7 +121,7 @@
                         android:fontFamily="@font/nudmotoya"
                         android:includeFontPadding="false"
                         android:text="View Products"
-                        android:textColor="@color/blue"
+                        android:textColor="@color/white"
                         android:textSize="@dimen/_7ssp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -135,7 +135,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_10sdp"
-                    android:background="@drawable/rectangle_outline_brown"
+                    android:background="@drawable/rectangle_solid_green"
                     android:padding="@dimen/_20sdp"
                     app:layout_constraintEnd_toEndOf="@+id/itemViewProducts"
                     app:layout_constraintStart_toStartOf="@+id/itemAddProducts"
@@ -152,7 +152,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:tint="@color/blue" />
+                        app:tint="@color/green" />
 
                     <TextView
                         android:id="@+id/tvTestStandardVM"
@@ -162,7 +162,7 @@
                         android:fontFamily="@font/nudmotoya"
                         android:includeFontPadding="false"
                         android:text="@string/technical_setting"
-                        android:textColor="@color/blue"
+                        android:textColor="@color/white"
                         android:textSize="@dimen/_7ssp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -176,9 +176,9 @@
                     android:layout_width="0dp"
                     android:layout_height="@dimen/_40sdp"
                     android:layout_marginTop="@dimen/_30sdp"
-                    android:background="@color/green"
+                    android:background="@color/blue"
                     android:fontFamily="@font/nudmotoya"
-                    android:text="@string/exit"
+                    android:text="Setting"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_14ssp"
@@ -187,6 +187,22 @@
                     app:layout_constraintEnd_toEndOf="@+id/itemViewProducts"
                     app:layout_constraintStart_toStartOf="@+id/itemAddProducts"
                     app:layout_constraintTop_toBottomOf="@+id/itemViewStandardVM" />
+    <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnGoToShopping"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    android:background="@color/green"
+                    android:fontFamily="@font/nudmotoya"
+                    android:text="@string/shopping"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_14ssp"
+                    android:textStyle="bold"
+                    app:backgroundTint="@null"
+                    app:layout_constraintEnd_toEndOf="@+id/btnExit"
+                    app:layout_constraintStart_toStartOf="@+id/btnExit"
+                    app:layout_constraintTop_toBottomOf="@+id/btnExit" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>

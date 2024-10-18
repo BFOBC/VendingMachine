@@ -17,6 +17,7 @@
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:fitsSystemWindows="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -81,6 +82,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/product_name"
+                    android:singleLine="true"
                     android:padding="16dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -102,6 +104,7 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/sell_price"
                     android:inputType="numberDecimal"
+                    android:singleLine="true"
                     android:padding="16dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -123,6 +126,7 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/cost_price"
                     android:inputType="numberDecimal"
+                    android:singleLine="true"
                     android:padding="16dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -144,6 +148,7 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/slot_number"
                     android:inputType="number"
+                    android:singleLine="true"
                     android:padding="16dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -163,6 +168,7 @@
                     android:id="@+id/etDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:singleLine="true"
                     android:hint="@string/description"
                     android:padding="16dp" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -185,6 +191,7 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/max_quantity"
                     android:inputType="number"
+                    android:singleLine="true"
                     android:padding="16dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -206,6 +213,7 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/available_quantity"
                     android:inputType="number"
+                    android:singleLine="true"
                     android:padding="16dp" />
             </com.google.android.material.textfield.TextInputLayout>
 

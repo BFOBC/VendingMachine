@@ -1,6 +1,8 @@
 package com.example.vendingmachineinventorymanagement.ui.admin
 
+import android.content.Intent
 import android.os.Bundle
+import android.provider.Settings
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -8,6 +10,7 @@ import com.example.vendingmachineinventorymanagement.R
 import com.example.vendingmachineinventorymanagement.databinding.ActivityDashboardBinding
 import com.example.vendingmachineinventorymanagement.extensionfunctions.createSingleInstanceIntent
 import com.example.vendingmachineinventorymanagement.testvm.MainActivity
+import com.example.vendingmachineinventorymanagement.ui.customer.WellComeActivity
 import com.example.vendingmachineinventorymanagement.utils.singleClickListener
 
 class Dashboard : AppCompatActivity() {
@@ -24,7 +27,12 @@ class Dashboard : AppCompatActivity() {
     private fun initViews() {
         binding.btnExit.singleClickListener {
             //exit all the activities
-            finishAffinity()
+            val intent = Intent(Settings.ACTION_SETTINGS)
+            startActivity(intent)
+        }
+        binding.btnGoToShopping.singleClickListener {
+            val intent = createSingleInstanceIntent<WellComeActivity>()
+            startActivity(intent)
         }
         binding.apply {
             itemViewProducts.setOnClickListener {

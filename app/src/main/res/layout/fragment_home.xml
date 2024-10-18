@@ -6,82 +6,114 @@
         android:layout_height="match_parent"
         android:background="@android:color/white"
         android:padding="16dp">
-    <!-- Header Text -->
-    <TextView
-        android:id="@+id/headerText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Welcome to [Brand Name]"
-        android:textColor="@android:color/black"
-        android:textSize="@dimen/_20ssp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/instructionText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
+        <!-- Header Text -->
+        <TextView
+            android:id="@+id/headerText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="82dp"
+            android:text="Welcome to [Brand Name]"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/_20ssp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/instructionText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
 
-    <!-- Instruction Text -->
-    <TextView
-        android:id="@+id/instructionText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Please scan your Staff Pass to check balance limit or redeem your item."
-        android:textColor="@android:color/darker_gray"
-        android:textSize="@dimen/_14ssp"
-        app:layout_constraintBottom_toTopOf="@+id/redeemButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/headerText" />
+        <!-- Instruction Text -->
+        <TextView
+            android:id="@+id/instructionText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:text="Please scan your Staff Pass to check balance limit or redeem your item."
+            android:textColor="@android:color/darker_gray"
+            android:textSize="@dimen/_14ssp"
+            app:layout_constraintBottom_toTopOf="@+id/redeemButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/headerText" />
 
-    <!-- Redeem Button -->
-    <Button
-        android:id="@+id/redeemButton"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="@dimen/_10sdp"
-        android:backgroundTint="@android:color/holo_green_light"
-        android:text="Redeem"
-        android:textColor="@android:color/white"
-        app:layout_constraintBottom_toTopOf="@+id/selectionInstructions"
-        app:layout_constraintEnd_toStartOf="@id/checkBalanceButton"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="spread"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/instructionText" />
+        <!-- Redeem Button -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/redeemButton"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:textSize="@dimen/_15ssp"
+            android:layout_marginTop="62dp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:background="@drawable/rectangle_solid_green"
+            android:text="Redeem"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toTopOf="@+id/selectionInstructions"
+            app:layout_constraintEnd_toStartOf="@id/checkBalanceButton"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/instructionText">
 
-    <!-- Check Balance Button -->
-    <Button
-        android:id="@+id/checkBalanceButton"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="32dp"
-        android:backgroundTint="@android:color/holo_blue_light"
-        android:text="Check Balance"
-        android:textColor="@android:color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/redeemButton"
-        app:layout_constraintTop_toBottomOf="@id/instructionText" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nudmotoya"
+                android:includeFontPadding="false"
+                android:text="Redeem"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_14ssp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Selection Instructions -->
-    <TextView
-        android:id="@+id/selectionInstructions"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Please choose your selection"
-        android:textColor="@android:color/black"
-        android:textSize="@dimen/_14ssp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/redeemButton" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <!-- Check Balance Button -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/checkBalanceButton"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:background="@drawable/rectangle_outline_brown"
+            android:text="Check Balance"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/_15ssp"
+            app:layout_constraintBottom_toBottomOf="@+id/redeemButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/redeemButton"
+            app:layout_constraintTop_toTopOf="@+id/redeemButton">
+            <TextView
+                android:id="@+id/tvTestStandardVM"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nudmotoya"
+                android:includeFontPadding="false"
+                android:text="Check Balance"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_14ssp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Selection Instructions -->
+        <TextView
+            android:id="@+id/selectionInstructions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="64dp"
+            android:text="Please choose your selection"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/_14ssp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/redeemButton" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

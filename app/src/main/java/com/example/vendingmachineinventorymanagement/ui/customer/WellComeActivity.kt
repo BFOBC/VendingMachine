@@ -9,6 +9,7 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.provider.Settings
+import android.util.Log
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.activity.enableEdgeToEdge
@@ -30,10 +31,12 @@ import com.example.vendingmachineinventorymanagement.extensionfunctions.visible
 import com.example.vendingmachineinventorymanagement.ui.admin.LoginActivity
 import com.example.vendingmachineinventorymanagement.ui.media.CustomMediaController
 import com.example.vendingmachineinventorymanagement.ui.media.MediaItemModel
+import com.example.vendingmachineinventorymanagement.utils.constansts.Constants.VENDINGMACHINEMEDIA
 import com.example.vendingmachineinventorymanagement.utils.enums.MediaType
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.io.File
+
 
 class WellComeActivity : AppCompatActivity() {
     private lateinit var navController: NavController
@@ -68,6 +71,7 @@ class WellComeActivity : AppCompatActivity() {
         }
         initViews()
     }
+
 
     private fun initViews() {
         openAdminSettings()
@@ -129,9 +133,10 @@ class WellComeActivity : AppCompatActivity() {
 
     // Function to load media files from the Download folder
     private fun loadMediaFromDownloadFolder() {
+        createVendingMachineFolder()
         val folderPath = File(
             Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
-            "VendingMachineMedia"
+            VENDINGMACHINEMEDIA
         )
 
         val downloadFolder = File(folderPath.toString())
@@ -265,6 +270,26 @@ class WellComeActivity : AppCompatActivity() {
         binding.imgAdminSetting.setupAdminSetting(this@WellComeActivity) {
             val intent = createSingleInstanceIntent<LoginActivity>()
             startActivity(intent)
+        }
+    }
+    private fun createVendingMachineFolder() {
+        // Use the Environment API to get the Download directory path
+        val downloadFolder =
+            Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
+
+
+        // Create a new File object for the "VendingMachineMedia" folder inside Downloads
+        val vendingMachineFolder = File(downloadFolder, VENDINGMACHINEMEDIA)
+
+        if (!vendingMachineFolder.exists()) {
+            val isCreated = vendingMachineFolder.mkdirs()
+            if (isCreated) {
+                Log.d("Folder", "VendingMachineMedia folder created successfully in Downloads.")
+            } else {
+                Log.e("Folder", "Failed to create VendingMachineMedia folder.")
+            }
+        } else {
+            Log.d("Folder", "VendingMachineMedia folder already exists.")
         }
     }
 }

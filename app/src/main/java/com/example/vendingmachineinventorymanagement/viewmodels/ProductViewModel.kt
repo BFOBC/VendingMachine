@@ -11,9 +11,11 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseException
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.storage.FirebaseStorage
 
 class ProductViewModel : ViewModel() {
     private val database = FirebaseDatabase.getInstance().getReference(TBL_PRODUCTS)
+    private val storageReference = FirebaseStorage.getInstance().reference
     // LiveData for observing the list of items
     private val _items = MutableLiveData<List<Product>>()
     val items: LiveData<List<Product>> get() = _items
@@ -87,5 +89,9 @@ class ProductViewModel : ViewModel() {
                 _operationStatus.value = Result.failure(e)
             }
     }
-
+    fun updateImagePath(referenceKey: String, imageURL:String) {
+        val ref = database.child(referenceKey) // Reference to the desired node
+        // Update the "imagePath" field with the new imageURL
+        ref.child("productImage").setValue(imageURL)
+    }
 }

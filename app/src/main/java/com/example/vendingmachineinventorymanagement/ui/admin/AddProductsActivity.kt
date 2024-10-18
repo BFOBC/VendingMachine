@@ -152,12 +152,12 @@ class AddProductsActivity : AppCompatActivity() {
         val product = Product(
             productId = productId,
             productName = binding.etProductName.text.toString().trim(),
-            productSellingPrice = binding.etSellPrice.text.toString().trim().toInt(),
-            productCostPrice = binding.etCostPrice.text.toString().trim().toInt(),
+            productSellingPrice = binding.etSellPrice.text.toString().trim().toDouble(),
+            productCostPrice = binding.etCostPrice.text.toString().trim().toDouble(),
             slotNumber = binding.etSlotNumber.text.toString().trim().toInt(),
             productDescription = binding.etDescription.text.toString().trim(),
-            maxQuantity = binding.etMaxQuantity.text.toString().trim().toInt(),
-            availableQuantity = binding.etAvailableQuantity.text.toString().trim().toInt(),
+            maxQuantity = binding.etMaxQuantity.text.toString().trim().toDouble(),
+            availableQuantity = binding.etAvailableQuantity.text.toString().trim().toDouble(),
             productImage = imageUrl // Save image URL
         )
 
