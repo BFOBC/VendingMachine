@@ -21,15 +21,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TextView
+            <androidx.appcompat.widget.Toolbar
                 android:id="@+id/labelToolbar"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_10sdp"
                 android:fontFamily="@font/nudmotoya"
                 android:gravity="center"
-                android:padding="@dimen/_5sdp"
-                android:text="Product Details"
+                app:title="Product Details"
+                app:titleTextColor="@color/green"
+                app:navigationIcon="@drawable/baseline_arrow_back_24"
                 android:textAllCaps="false"
                 android:textColor="@color/dark_brown"
                 android:textSize="@dimen/_14ssp"
@@ -216,7 +217,19 @@
                     android:singleLine="true"
                     android:padding="16dp" />
             </com.google.android.material.textfield.TextInputLayout>
-
+            <Spinner
+                android:id="@+id/currencySpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:padding="16dp"
+                android:background="@drawable/rectangle_outline_gray"
+                android:spinnerMode="dropdown"
+                android:entries="@array/currency_symbols"
+                app:layout_constraintEnd_toEndOf="@+id/layoutAvailableQuantity"
+                app:layout_constraintStart_toStartOf="@+id/layoutAvailableQuantity"
+                app:layout_constraintTop_toBottomOf="@+id/layoutAvailableQuantity"
+                />
             <!-- Submit, Update, and Delete Product Buttons -->
             <LinearLayout
                 android:layout_width="0dp"
@@ -224,9 +237,9 @@
                 android:layout_marginTop="@dimen/_20sdp"
                 android:gravity="center"
                 android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="@+id/layoutAvailableQuantity"
-                app:layout_constraintStart_toStartOf="@+id/layoutAvailableQuantity"
-                app:layout_constraintTop_toBottomOf="@id/layoutAvailableQuantity">
+                app:layout_constraintEnd_toEndOf="@+id/currencySpinner"
+                app:layout_constraintStart_toStartOf="@+id/currencySpinner"
+                app:layout_constraintTop_toBottomOf="@id/currencySpinner">
 
                 <!-- Update Product Button -->
                 <Button

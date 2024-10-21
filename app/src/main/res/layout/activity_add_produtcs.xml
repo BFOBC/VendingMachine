@@ -9,19 +9,17 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
-        <TextView
+        <androidx.appcompat.widget.Toolbar
             android:id="@+id/labelToolbar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/nudmotoya"
             android:gravity="center"
-            android:padding="@dimen/_5sdp"
-            android:text="@string/add_product"
+            app:title="@string/add_product"
             android:textAllCaps="false"
-            android:layout_marginTop="@dimen/_20sdp"
-            android:textSize="@dimen/_14ssp"
-            android:textColor="@color/dark_brown"
+            app:titleTextColor="@color/green"
+            app:navigationIcon="@drawable/baseline_arrow_back_24"
+            android:layout_marginTop="@dimen/_10sdp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -199,7 +197,19 @@
                 android:inputType="number"
                 android:padding="16dp" />
         </com.google.android.material.textfield.TextInputLayout>
-
+        <Spinner
+            android:id="@+id/currencySpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:padding="16dp"
+            android:background="@drawable/rectangle_outline_gray"
+            android:spinnerMode="dropdown"
+            android:entries="@array/currency_symbols"
+            app:layout_constraintEnd_toEndOf="@+id/layoutAvailableQuantity"
+            app:layout_constraintStart_toStartOf="@+id/layoutAvailableQuantity"
+            app:layout_constraintTop_toBottomOf="@+id/layoutAvailableQuantity"
+            />
         <!-- Submit Product Button -->
         <Button
             android:id="@+id/btnSubmitProduct"
@@ -211,8 +221,8 @@
             android:layout_marginTop="@dimen/_20sdp"
             android:text="@string/save_product"
             app:backgroundTint="@null"
-            app:layout_constraintEnd_toEndOf="@+id/layoutAvailableQuantity"
-            app:layout_constraintStart_toStartOf="@+id/layoutAvailableQuantity"
-            app:layout_constraintTop_toBottomOf="@+id/layoutAvailableQuantity" />
+            app:layout_constraintEnd_toEndOf="@+id/currencySpinner"
+            app:layout_constraintStart_toStartOf="@+id/currencySpinner"
+            app:layout_constraintTop_toBottomOf="@+id/currencySpinner" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

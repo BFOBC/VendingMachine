@@ -9,12 +9,16 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
 import android.provider.Settings
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.example.vendingmachineinventorymanagement.R
 import com.example.vendingmachineinventorymanagement.utils.constansts.Constants.TBL_PRODUCTS
 import com.example.vendingmachineinventorymanagement.databinding.ActivityAddProdutcsBinding
 import com.example.vendingmachineinventorymanagement.extensionfunctions.hide
@@ -23,6 +27,8 @@ import com.example.vendingmachineinventorymanagement.extensionfunctions.showCust
 import com.example.vendingmachineinventorymanagement.extensionfunctions.showCustomToast
 import com.example.vendingmachineinventorymanagement.extensionfunctions.visible
 import com.example.vendingmachineinventorymanagement.models.Product
+import com.example.vendingmachineinventorymanagement.utils.constansts.Constants.CURRENCY_SYMBOL
+import com.example.vendingmachineinventorymanagement.utils.singleClickListener
 import com.example.vendingmachineinventorymanagement.viewmodels.ProductViewModel
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
@@ -38,7 +44,7 @@ class AddProductsActivity : AppCompatActivity() {
     private var imageUrl: String=""
     private lateinit var progressDialog: ProgressDialog // Declare ProgressDialog
     private val productViewModel: ProductViewModel by viewModels()
-
+    private lateinit var selectedCurrency:String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -58,8 +64,35 @@ class AddProductsActivity : AppCompatActivity() {
             }
         }
     }
+    private fun setCurrency(){
+        // Load currency symbols from strings.xml
+        val currencies = resources.getStringArray(R.array.currency_symbols)
+        // Create ArrayAdapter and set it on the Spinner
+        val adapter = ArrayAdapter(
+            this, android.R.layout.simple_spinner_item, currencies
+        )
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        binding.currencySpinner.adapter = adapter
 
+        // Set OnItemSelectedListener for the Spinner
+        binding.currencySpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+                // Get the selected item
+                CURRENCY_SYMBOL =currencies[position]
+                selectedCurrency = currencies[position]
+                // Display the selected currency using a Toast
+                Toast.makeText(this@AddProductsActivity, "Selected: $selectedCurrency", Toast.LENGTH_SHORT).show()
+            }
+            override fun onNothingSelected(parent: AdapterView<*>) {
+                // Optional: Handle case when nothing is selected
+            }
+        }
+    }
     private fun initViews() {
+        setCurrency()
+        binding.labelToolbar.singleClickListener {
+            onBackPressed()
+        }
         binding.btnChooseImage.setOnClickListener {
             if (checkPermission()) {
                 openGallery()
@@ -158,7 +191,8 @@ class AddProductsActivity : AppCompatActivity() {
             productDescription = binding.etDescription.text.toString().trim(),
             maxQuantity = binding.etMaxQuantity.text.toString().trim().toDouble(),
             availableQuantity = binding.etAvailableQuantity.text.toString().trim().toDouble(),
-            productImage = imageUrl // Save image URL
+            productImage = imageUrl,
+            currency = selectedCurrency
         )
 
 

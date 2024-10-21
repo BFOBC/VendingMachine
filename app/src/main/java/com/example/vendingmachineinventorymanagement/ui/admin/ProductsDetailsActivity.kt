@@ -12,6 +12,8 @@ import android.os.Environment
 import android.provider.Settings
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
@@ -24,7 +26,9 @@ import com.example.vendingmachineinventorymanagement.databinding.ActivityProduct
 import com.example.vendingmachineinventorymanagement.extensionfunctions.isNetworkAvailable
 import com.example.vendingmachineinventorymanagement.extensionfunctions.loadImageIntoImageView
 import com.example.vendingmachineinventorymanagement.extensionfunctions.showCustomErrorDialog
+import com.example.vendingmachineinventorymanagement.extensionfunctions.showCustomToast
 import com.example.vendingmachineinventorymanagement.models.Product
+import com.example.vendingmachineinventorymanagement.utils.constansts.Constants.CURRENCY_SYMBOL
 import com.example.vendingmachineinventorymanagement.utils.singleClickListener
 import com.example.vendingmachineinventorymanagement.viewmodels.ProductViewModel
 import com.google.firebase.storage.FirebaseStorage
@@ -40,6 +44,7 @@ class ProductsDetailsActivity : AppCompatActivity() {
     private lateinit var progressDialog: ProgressDialog // Declare ProgressDialog
     private  var isImageSelected:Boolean=false
     private lateinit var product:Product
+    private lateinit var selectedCurrency:String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -130,7 +135,35 @@ class ProductsDetailsActivity : AppCompatActivity() {
             }
         }
     }
+    private fun setCurrency(){
+        // Load currency symbols from strings.xml
+        val currencies = resources.getStringArray(R.array.currency_symbols)
+        // Create ArrayAdapter and set it on the Spinner
+        val adapter = ArrayAdapter(
+            this, android.R.layout.simple_spinner_item, currencies
+        )
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        binding.currencySpinner.adapter = adapter
+
+        // Set OnItemSelectedListener for the Spinner
+        binding.currencySpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+                // Get the selected item
+                CURRENCY_SYMBOL=currencies[position]
+                selectedCurrency = currencies[position]
+                // Display the selected currency using a Toast
+                Toast.makeText(this@ProductsDetailsActivity, "Selected: $selectedCurrency", Toast.LENGTH_SHORT).show()
+            }
+            override fun onNothingSelected(parent: AdapterView<*>) {
+                // Optional: Handle case when nothing is selected
+            }
+        }
+    }
     private fun initViews() {
+        setCurrency()
+        binding.labelToolbar.singleClickListener {
+            onBackPressed()
+        }
         setupKeyboardDismissListeners()
 
         binding.btnChooseImage.setOnClickListener {
@@ -217,7 +250,7 @@ class ProductsDetailsActivity : AppCompatActivity() {
                     if (isImageSelected){
                         uploadImageAndSaveProduct()
                     }
-                    productViewModel.updateDataInFirebase(product?.productId.toString(),updatedProductData)
+                    readAndSaveData(slotNumber,updatedProductData)
                 }else{
                     val imageResId = resources.getIdentifier(
                         "sad_icon",
@@ -232,7 +265,7 @@ class ProductsDetailsActivity : AppCompatActivity() {
                         if (isImageSelected){
                             uploadImageAndSaveProduct()
                         }
-                        productViewModel.updateDataInFirebase(product?.productId.toString(),updatedProductData)
+                        readAndSaveData(slotNumber, updatedProductData)
                     }
                 }
             }
@@ -361,6 +394,23 @@ class ProductsDetailsActivity : AppCompatActivity() {
         } else {
             Toast.makeText(this, "Please select an image", Toast.LENGTH_SHORT).show()
         }
+    }
+    private fun readAndSaveData(slotNumber: Int, updatedProductData: Map<String, Any>) {
+        productViewModel.items.observe(this) { itemList ->
+            if (itemList != null) {
+                // Check if slot is already occupied
+                val existingProduct = isSlotOccupied(slotNumber, itemList)
+                if (existingProduct != null) {
+                    // Show toast with the product name
+                    showCustomToast("Slot $slotNumber is already occupied by ${existingProduct.productName}")
+                } else {
+                    productViewModel.updateDataInFirebase(product.productId.toString(),updatedProductData)
+                }
+            }
+        }
+    }
+    private fun isSlotOccupied(slotNumber: Int, itemList: List<Product>): Product? {
+        return itemList.find { it.slotNumber == slotNumber }
     }
     private fun setupKeyboardDismissListeners() {
         // List all the EditText fields that need this behavior

@@ -25,4 +25,12 @@
     <string name="technical_setting">Technical Setting</string>
     <string name="go_to_shopping">Go to Shopping</string>
     <string name="shopping">Shopping</string>
+    <string-array name="currency_symbols">
+        <item>₹</item>
+        <item>$</item>
+        <item>€</item>
+        <item>£</item>
+        <item>¥</item>
+        <item>₩</item>
+    </string-array>
 </resources>

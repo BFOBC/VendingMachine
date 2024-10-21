@@ -10,6 +10,7 @@ import android.widget.ListView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.vendingmachineinventorymanagement.R;
 
@@ -49,7 +50,9 @@ public class MainActivity extends AppCompatActivity {
         listAdapter = new ListAdapter();
         listAdapter.setContext(this);
         listView.setAdapter(listAdapter);
+        Toolbar toolbar = findViewById(R.id.labelToolbar);
 
+        toolbar.setOnClickListener(v -> onBackPressed());
         SerialUtils su = new SerialUtils();
         su.openAndConnectPort(MainActivity.this);
         // Example usage of calling openAndConnectPort method

@@ -1,5 +1,6 @@
 package com.example.vendingmachineinventorymanagement.models
 
+import android.icu.util.Currency
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
@@ -22,4 +23,5 @@ data class Product(
     @SerializedName("productCategoryId") var productCategoryId: Int? = null,
     @SerializedName("productTypeId") var productTypeId: Int? = null,
     @SerializedName("productURL") var productURL: String? = null,
+    @SerializedName("productURL") var currency: String? = null,
 ) : Parcelable

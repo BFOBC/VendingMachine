@@ -20,6 +20,7 @@ import com.example.vendingmachineinventorymanagement.ui.media.CustomMediaControl
 import com.example.vendingmachineinventorymanagement.ui.media.MediaItemModel
 import com.example.vendingmachineinventorymanagement.utils.constansts.Constants.ADMIN
 import com.example.vendingmachineinventorymanagement.utils.enums.MediaType
+import com.example.vendingmachineinventorymanagement.utils.singleClickListener
 import com.example.vendingmachineinventorymanagement.viewmodels.ProductViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -46,6 +47,9 @@ class ViewProductsActivity : AppCompatActivity() {
         readData()  // Observe the updated data
     }
     private fun initViews() {
+        binding.imgViewLogo.singleClickListener {
+            onBackPressed()
+        }
         readData()
         // Set up the refresh listener
         binding.pullToRefresh.setOnRefreshListener { // Refresh your data here

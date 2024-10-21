@@ -16,6 +16,7 @@
             android:orientation="vertical"
             android:fillViewport="true">
 
+
             <TextView
                 android:id="@+id/labelToolbar"
                 android:visibility="gone"
@@ -61,7 +62,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/logoRootView"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_100sdp"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center"
                     app:layout_constraintBottom_toBottomOf="@+id/videoView"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -70,12 +71,9 @@
 
                     <ImageView
                         android:id="@+id/imgViewLogo"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/vending_icon"
-                        android:visibility="gone"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_width="@dimen/_50sdp"
+                        android:layout_height="@dimen/_50sdp"
+                        android:src="@drawable/baseline_arrow_back_ios_24"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:tint="@color/white" />
