@@ -80,8 +80,6 @@ class AddProductsActivity : AppCompatActivity() {
                 // Get the selected item
                 CURRENCY_SYMBOL =currencies[position]
                 selectedCurrency = currencies[position]
-                // Display the selected currency using a Toast
-                Toast.makeText(this@AddProductsActivity, "Selected: $selectedCurrency", Toast.LENGTH_SHORT).show()
             }
             override fun onNothingSelected(parent: AdapterView<*>) {
                 // Optional: Handle case when nothing is selected
@@ -93,7 +91,7 @@ class AddProductsActivity : AppCompatActivity() {
         binding.labelToolbar.singleClickListener {
             onBackPressed()
         }
-        binding.btnChooseImage.setOnClickListener {
+        binding.frameImage.setOnClickListener {
             if (checkPermission()) {
                 openGallery()
             } else {

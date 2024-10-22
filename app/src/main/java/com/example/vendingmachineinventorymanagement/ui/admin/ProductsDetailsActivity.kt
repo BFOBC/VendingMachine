@@ -21,6 +21,9 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
 import com.example.vendingmachineinventorymanagement.R
 import com.example.vendingmachineinventorymanagement.databinding.ActivityProductsDetailsBinding
 import com.example.vendingmachineinventorymanagement.extensionfunctions.isNetworkAvailable
@@ -45,6 +48,8 @@ class ProductsDetailsActivity : AppCompatActivity() {
     private  var isImageSelected:Boolean=false
     private lateinit var product:Product
     private lateinit var selectedCurrency:String
+    private lateinit var items: List<Product>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -151,8 +156,6 @@ class ProductsDetailsActivity : AppCompatActivity() {
                 // Get the selected item
                 CURRENCY_SYMBOL=currencies[position]
                 selectedCurrency = currencies[position]
-                // Display the selected currency using a Toast
-                Toast.makeText(this@ProductsDetailsActivity, "Selected: $selectedCurrency", Toast.LENGTH_SHORT).show()
             }
             override fun onNothingSelected(parent: AdapterView<*>) {
                 // Optional: Handle case when nothing is selected
@@ -166,7 +169,7 @@ class ProductsDetailsActivity : AppCompatActivity() {
         }
         setupKeyboardDismissListeners()
 
-        binding.btnChooseImage.setOnClickListener {
+        binding.frameImage.setOnClickListener {
             if (checkPermission()) {
                 openGallery()
             } else {
@@ -220,7 +223,7 @@ class ProductsDetailsActivity : AppCompatActivity() {
                 .setNegativeButton("No") { dialog, _ ->
                     dialog.dismiss() // Just dismiss if user clicks "No"
                 }
-                .setCancelable(false) // Optional: Prevent dismissal by tapping outside
+                .setCancelable(false) /// Optional: Prevent dismissal by tapping outside
                 .show() // Show the dialog
         }
 
@@ -250,7 +253,7 @@ class ProductsDetailsActivity : AppCompatActivity() {
                     if (isImageSelected){
                         uploadImageAndSaveProduct()
                     }
-                    readAndSaveData(slotNumber,updatedProductData)
+                    readAndSaveData(slotNumber,product,updatedProductData)
                 }else{
                     val imageResId = resources.getIdentifier(
                         "sad_icon",
@@ -265,7 +268,7 @@ class ProductsDetailsActivity : AppCompatActivity() {
                         if (isImageSelected){
                             uploadImageAndSaveProduct()
                         }
-                        readAndSaveData(slotNumber, updatedProductData)
+                        readAndSaveData(slotNumber, product,updatedProductData)
                     }
                 }
             }
@@ -395,23 +398,34 @@ class ProductsDetailsActivity : AppCompatActivity() {
             Toast.makeText(this, "Please select an image", Toast.LENGTH_SHORT).show()
         }
     }
-    private fun readAndSaveData(slotNumber: Int, updatedProductData: Map<String, Any>) {
-        productViewModel.items.observe(this) { itemList ->
-            if (itemList != null) {
-                // Check if slot is already occupied
-                val existingProduct = isSlotOccupied(slotNumber, itemList)
-                if (existingProduct != null) {
-                    // Show toast with the product name
-                    showCustomToast("Slot $slotNumber is already occupied by ${existingProduct.productName}")
-                } else {
-                    productViewModel.updateDataInFirebase(product.productId.toString(),updatedProductData)
-                }
+    private fun readAndSaveData(slotNumber: Int, product: Product, updatedProductData: Map<String, Any>) {
+        productViewModel.items.observeOnce(this) { itemList ->
+            items=itemList
+        }
+        if (items.isNotEmpty()){
+            val occupyingProduct = getOccupyingProduct(slotNumber, product.productId.toString(), items)
+            if (occupyingProduct!=null) {
+                showCustomToast("Slot $slotNumber is already occupied by ${occupyingProduct.productName}")
+            } else {
+                productViewModel.updateDataInFirebase(product.productId.toString(), updatedProductData)
             }
         }
     }
-    private fun isSlotOccupied(slotNumber: Int, itemList: List<Product>): Product? {
-        return itemList.find { it.slotNumber == slotNumber }
+
+    // Helper function to observe LiveData only once
+    private fun <T> LiveData<T>.observeOnce(owner: LifecycleOwner, observer: Observer<T>) {
+        observe(owner, object : Observer<T> {
+            override fun onChanged(value: T) {
+                observer.onChanged(value)
+                removeObserver(this)
+            }
+        })
     }
+    private fun getOccupyingProduct(slotNumber: Int, productId: String, itemList: List<Product>): Product? {
+        // Find the product occupying the slot, excluding the current product
+        return itemList.find { it.slotNumber == slotNumber && it.productId != productId }
+    }
+
     private fun setupKeyboardDismissListeners() {
         // List all the EditText fields that need this behavior
         val editTexts = listOf(binding.etProductName, binding.etSellPrice, binding.etCostPrice, binding.etSlotNumber,

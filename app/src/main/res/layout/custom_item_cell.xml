@@ -5,36 +5,62 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/item_parentView"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_5sdp"
+        android:paddingBottom="@dimen/_5sdp"
+        android:paddingTop="@dimen/_5sdp"
+        android:paddingEnd="@dimen/_10sdp"
+        android:paddingStart="@dimen/_10sdp"
         android:background="@drawable/white_rectangle_shape"
         android:layoutDirection="ltr"
-        android:paddingLeft="@dimen/_5sdp"
-        android:paddingTop="@dimen/_10sdp"
-        android:paddingRight="@dimen/_5sdp"
-        android:paddingBottom="@dimen/_5sdp">
+        android:layout_marginBottom="@dimen/_5sdp">
+
+        <TextView
+            android:id="@+id/tvSlot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/blooming_elegant_sans"
+            android:gravity="center"
+            android:text="Slot#1"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_8ssp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvMaxItems"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Max: 20"
+            android:textSize="@dimen/_8ssp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/blooming_elegant_sans"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@id/tvAvailableItems"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imageViewItem"
             android:layout_width="@dimen/_40sdp"
             android:layout_height="@dimen/_40sdp"
-            app:layout_constraintBottom_toTopOf="@+id/tvItemName"
+            app:layout_constraintTop_toBottomOf="@+id/tvSlot"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             android:src="@drawable/hotchocolate_coffee"
             app:civ_border_width="2dp"
-            app:civ_border_color="#FF000000"/>
+            app:civ_border_color="#FF000000" />
 
         <TextView
             android:id="@+id/tvItemName"
-            android:layout_width="@dimen/_50sdp"
-            android:layout_height="@dimen/_10sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:ellipsize="end"
             android:fontFamily="@font/nudmotoya"
             android:gravity="center"
-            android:includeFontPadding="false"
             android:singleLine="true"
             android:text="Hot Chocolate"
             android:textColor="@color/black"
@@ -48,19 +74,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/blooming_elegant_sans"
-            android:includeFontPadding="false"
-            android:text="Text View 2"
+            android:text="Rs. 200"
             android:textColor="@color/black"
             android:textSize="@dimen/_10ssp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvItemName" />
+
         <TextView
-            android:id="@+id/tvSlotNumber"
+            android:id="@+id/tvAvailableItems"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/blooming_elegant_sans"
-            android:text="Slot #1"
+            android:text="Available Items:"
             android:textColor="@color/black"
             android:textSize="@dimen/_8ssp"
             app:layout_constraintEnd_toEndOf="@+id/tvItemPrice"
@@ -74,9 +100,9 @@
             android:layout_height="@dimen/_25sdp"
             android:fontFamily="@font/blooming_elegant_sans"
             android:text="@string/view"
-            app:layout_constraintEnd_toEndOf="@+id/tvSlotNumber"
-            app:layout_constraintStart_toStartOf="@+id/tvSlotNumber"
-            app:layout_constraintTop_toBottomOf="@+id/tvSlotNumber" />
+            app:layout_constraintEnd_toEndOf="@+id/tvMaxItems"
+            app:layout_constraintStart_toStartOf="@+id/tvMaxItems"
+            app:layout_constraintTop_toBottomOf="@+id/tvMaxItems" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

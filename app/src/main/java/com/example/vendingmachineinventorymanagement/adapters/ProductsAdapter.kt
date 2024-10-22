@@ -31,8 +31,10 @@ class ProductsAdapter(
             }else{
                 btnOrder.setText("vend")
             }
-            tvSlotNumber.text = "SLOT #"+viewProductResponse.slotNumber.toString()
+            tvSlot.text = "SLOT #"+viewProductResponse.slotNumber.toString()
             tvItemName.text = viewProductResponse.productName
+            tvMaxItems.text ="Max Items "+ viewProductResponse.maxQuantity.toString()
+            tvAvailableItems.text ="Available Items "+ viewProductResponse.availableQuantity.toString()
             tvItemPrice.text = CURRENCY_SYMBOL+ " " +viewProductResponse.productSellingPrice
             // Load image using Glide or any other image loading library
             val placeholderImage = R.drawable.baseline_money_24

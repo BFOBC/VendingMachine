@@ -73,6 +73,8 @@
                         android:id="@+id/imgViewLogo"
                         android:layout_width="@dimen/_50sdp"
                         android:layout_height="@dimen/_50sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginStart="@dimen/_10sdp"
                         android:src="@drawable/baseline_arrow_back_ios_24"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"

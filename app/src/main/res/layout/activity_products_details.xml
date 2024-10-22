@@ -37,32 +37,40 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-
-            <!-- Product Image -->
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/productImageView"
+            <FrameLayout
+                android:id="@+id/frameImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/labelToolbar"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:scaleType="centerCrop"
-                android:layout_width="@dimen/_150sdp"
-                android:layout_height="@dimen/_150sdp"
-                app:civ_border_width="2dp"
-                app:civ_border_color="#FF000000"/>
+                android:layout_marginTop="@dimen/_8sdp">
 
-            <!-- Choose Image Button -->
-            <Button
-                android:id="@+id/btnChooseImage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/rectangle_solid_brown"
-                android:fontFamily="@font/nudmotoya"
-                android:text="Replace Image"
-                app:backgroundTint="@null"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/productImageView" />
+                <!-- Product Image -->
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/productImageView"
+                    android:layout_width="@dimen/_150sdp"
+                    android:layout_height="@dimen/_150sdp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/imageview_home"
+                    app:civ_border_width="2dp"
+                    app:civ_border_color="#FF000000" />
+
+                <!-- Edit Icon -->
+                <ImageView
+                    android:id="@+id/editIcon"
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_gravity="bottom|end"
+                    android:layout_margin="@dimen/_4sdp"
+                    android:src="@drawable/baseline_edit_24"
+                    android:background="@drawable/btn_filled_circle"
+                    android:contentDescription="Edit Image"
+                    android:padding="@dimen/_4sdp"
+                    android:elevation="2dp"
+                    app:tint="@color/white" />
+
+            </FrameLayout>
 
             <!-- Product Name -->
             <com.google.android.material.textfield.TextInputLayout
@@ -76,7 +84,7 @@
                 app:boxBackgroundMode="outline"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/btnChooseImage">
+                app:layout_constraintTop_toBottomOf="@id/frameImage">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etProductName"
