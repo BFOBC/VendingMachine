@@ -16,6 +16,8 @@ import com.example.vendingmachineinventorymanagement.extensionfunctions.hide
 import com.example.vendingmachineinventorymanagement.extensionfunctions.showCustomErrorDialog
 import com.example.vendingmachineinventorymanagement.extensionfunctions.visible
 import com.example.vendingmachineinventorymanagement.models.Product
+import com.example.vendingmachineinventorymanagement.testvm.HexDataHelper
+import com.example.vendingmachineinventorymanagement.testvm.SerialUtils
 import com.example.vendingmachineinventorymanagement.ui.media.CustomMediaController
 import com.example.vendingmachineinventorymanagement.ui.media.MediaItemModel
 import com.example.vendingmachineinventorymanagement.utils.constansts.Constants.ADMIN
@@ -33,6 +35,9 @@ class ViewProductsActivity : AppCompatActivity() {
     private lateinit var mediaController: CustomMediaController
     private var mediaItems: List<MediaItemModel>? = null
     private var currentIndex = 0
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -41,6 +46,8 @@ class ViewProductsActivity : AppCompatActivity() {
         getScreenSize()
         initViews()
     }
+
+
     override fun onResume() {
         super.onResume()
         productViewModel.fetchItems()  // Re-fetch data

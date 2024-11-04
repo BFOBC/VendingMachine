@@ -4,7 +4,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/white"
+        android:background="@color/navy_blue"
         android:padding="16dp">
         <!-- Header Text -->
         <TextView
@@ -12,8 +12,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="82dp"
-            android:text="Welcome to [Brand Name]"
-            android:textColor="@android:color/black"
+            android:text="Welcome to SAESL Corporation"
+            android:textColor="@color/white"
             android:textSize="@dimen/_20ssp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/instructionText"
@@ -30,8 +30,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="36dp"
             android:text="Please scan your Staff Pass to check balance limit or redeem your item."
-            android:textColor="@android:color/darker_gray"
+            android:textColor="@color/white"
             android:textSize="@dimen/_14ssp"
+            android:gravity="center"
             app:layout_constraintBottom_toTopOf="@+id/redeemButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -107,7 +108,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="64dp"
             android:text="Please choose your selection"
-            android:textColor="@android:color/black"
+            android:textColor="@color/white"
             android:textSize="@dimen/_14ssp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
