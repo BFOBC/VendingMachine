@@ -18,6 +18,7 @@
                 android:id="@+id/tapCardPrompt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:layout_marginTop="48dp"
                 android:text="Please tap your Staff Pass to redeem."
                 android:textColor="@android:color/black"
@@ -31,6 +32,7 @@
             <!-- Card Icon -->
             <ImageView
                 android:id="@+id/cardIcon"
+                android:visibility="gone"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_marginTop="24dp"
@@ -43,6 +45,7 @@
             <!-- Product Selection Title -->
             <TextView
                 android:id="@+id/productSelectionTitle"
+                android:visibility="gone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_10sdp"

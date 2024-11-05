@@ -21,7 +21,7 @@
             android:text="@string/manage_products"
             android:textAllCaps="false"
             android:textSize="@dimen/_14ssp"
-            android:textColor="@color/blue"
+            android:textColor="@color/dark_blue"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -70,7 +70,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:tint="@color/blue" />
+                        app:tint="@color/orange" />
 
                     <TextView
                         android:id="@+id/tvCanister"
@@ -111,7 +111,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:tint="@color/blue" />
+                        app:tint="@color/orange" />
 
                     <TextView
                         android:id="@+id/tvTestCoffee"
@@ -176,7 +176,7 @@
                     android:layout_width="0dp"
                     android:layout_height="@dimen/_40sdp"
                     android:layout_marginTop="@dimen/_30sdp"
-                    android:background="@color/blue"
+                    android:background="@color/dark_blue"
                     android:fontFamily="@font/nudmotoya"
                     android:text="Setting"
                     android:textAllCaps="false"

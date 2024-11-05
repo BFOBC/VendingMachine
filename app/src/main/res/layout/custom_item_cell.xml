@@ -45,8 +45,8 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imageViewItem"
-            android:layout_width="@dimen/_40sdp"
-            android:layout_height="@dimen/_40sdp"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
             app:layout_constraintTop_toBottomOf="@+id/tvSlot"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -64,7 +64,7 @@
             android:singleLine="true"
             android:text="Hot Chocolate"
             android:textColor="@color/black"
-            android:textSize="@dimen/_7ssp"
+            android:textSize="@dimen/_5ssp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageViewItem" />
@@ -96,7 +96,7 @@
         <Button
             android:id="@+id/btnOrder"
             style="@style/ButtonStyle.DarkBrownButton"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/_100sdp"
             android:layout_height="@dimen/_25sdp"
             android:fontFamily="@font/blooming_elegant_sans"
             android:text="@string/view"
